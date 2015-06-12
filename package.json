@@ -1,13 +1,14 @@
 {
-  "name": "application-name",
+  "name": "OnlineShop",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.0.2",
-    "error-handler": "^0.1.4",
+    "body-parser": "^1.12.4",
+    "ejs": "^2.3.1",
     "express": "~4.1.1",
-    "jade": "~0.31.2",
+    "express-error-handler": "^1.0.1",
     "method-override": "^1.0.0",
-    "morgan": "^1.0.0"
+    "morgan": "^1.0.0",
+    "underscore": "^1.8.3"
   }
 }
