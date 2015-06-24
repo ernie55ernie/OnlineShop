@@ -16,6 +16,14 @@ angular.module('myApp.controllers', []).
       $scope.name = 'Error!';
     });
 
+    $scope.upload = function(){
+      filepicker.setKey("AfDUcO2yfT4yVBX9p2t4Xz");
+      filepicker.pickAndStore({mimetype:"image/*"},{},
+        function(InkBlobs){
+          console.log(JSON.stringify(InkBlobs));
+      });
+    }
+
   }).
   controller('MyCtrl1', function ($scope) {
     // write Ctrl here
