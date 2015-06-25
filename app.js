@@ -14,6 +14,9 @@ var express = require('express'),
   path = require('path'),
   _ = require('underscore');
 
+var local = require('./config/local'),
+    api = require('./routes/api');
+
 var app = module.exports = express();
 
 
@@ -55,6 +58,7 @@ app.get('/partials/:name', routes.partials);
 
 // JSON API
 app.get('/api/name', api.name);
+app.get('/api/csv', api.getAllCsv);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

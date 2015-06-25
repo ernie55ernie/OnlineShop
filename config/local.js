@@ -1,6 +1,13 @@
 // hostname: ck6tp6m4-dm_final-1566920
 // port: 3306
 // username: ck6tp6m4
+/*
+$mysql_host = "mysql8.000webhost.com";
+$mysql_database = "a4050679_shop";
+$mysql_user = "a4050679_shop";
+$mysql_password = "shop1shop";
+*/
+
 var sslEnabled = false;
 var path  = require('path');
 
@@ -18,25 +25,25 @@ module.exports = {
 
 	model: {
 		mysql : {
-			database: "",
-			account : "ck6tp6m4",
-			password: "",
+			database: "a4050679_shop",
+			account : "a4050679_shop",
+			password: "shop1shop",
 			options : {
-				host    : "ck6tp6m4-dm_final-1566920",
+				host    : "mysql8.000webhost.com",
 				logging : false
 			}
 		},
 		mongo : {
-			database: "SDM",
+			database: "",
 			options : {
-				host: "127.0.0.1"
+				host: ""
 			}
 		}
 	},
 
 	session: {
 		redis: {
-			host: 'localhost',
+			host: 'ck6tp6m4-dm_final-1566920',
 			port: 6379
 		}
     }
