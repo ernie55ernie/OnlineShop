@@ -7,3 +7,9 @@ exports.name = function (req, res) {
     name: 'Bob'
   });
 };
+
+exports.ruleGenerate = function(req, res){
+	var list= req.body.list;
+
+	// create rule to database
+}
