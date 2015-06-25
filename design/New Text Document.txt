@@ -7,3 +7,29 @@
 節日和購物清單關係
 新商品上架時間推薦
 商品類型
+
+{
+"SID":1,// Shopping List ID
+"CID":1,// Customer ID
+"ShoppingList":[
+		{"PID":1,"Amount":1}
+		{"PID":2,"Amount":3}
+		],
+"Time":currentTime,
+}
+
+{
+"RID":1,// Rule ID
+"Previous":
+[
+	
+],
+
+"Recommand":
+[
+	
+]
+,
+"ID":1,	// Group or Customer ID
+"Group":true // Is group or not
+}
