@@ -1,9 +1,9 @@
 /*
  * Serve JSON to our AngularJS client
  */
-var csvstore = require('../models').CsvStore;
+var CsvStore = require('../models').CsvStore;
+
 var local = require("../config/local");
-var user = require('../models').User;
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(
 		local.model.mysql.database,
@@ -20,17 +20,35 @@ exports.name = function (req, res) {
 
 exports.ruleGenerate = function(req, res){
 	var list = req.body.list;
-
+    
 	// create rule to database
 };
 
 exports.getAllCsv = function(req, res){
-	csvstore.findAll({
-        where: {
-        }
-    }).then(function(courses) {
-        res.json(csvstore);
-    }).catch(function(err){
-        console.log(err);
-    })
+    CsvStore.sync().then(function() {
+    // here comes your find command.
+      CsvStore
+          .findAll().then(function(result){
+            console.log('retrieve success');
+            res.json(result);
+          })
+      })
+};
+
+exports.saveCsv = function(req, res){
+    CsvStore.sync().then(function() {
+    // here comes your find command.
+      CsvStore
+      .build(req.body)
+      .save()
+      .then(function(anotherTask) {
+        // you can now access the currently saved task with the variable anotherTask... nice!
+        console.log('Created an csv file');
+        //res.send("respond with a resource");
+        res.json(anotherTask);
+      }).catch(function(error) {
+        // Ooops, do some error-handling
+        console.log(error);
+      })
+  })
 };

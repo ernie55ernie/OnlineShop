@@ -3,9 +3,7 @@ exports.History = function(Sequelize, sequelize){
 
     hid: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true }, 
     htime: Sequelize.DATE,
-    cid: Sequelize.INTEGER,
-    createdAt: Sequelize.DATE,
-    updateAt: Sequelize.DATE
+    cid: Sequelize.INTEGER
 
   },{
     tableName: 'History'

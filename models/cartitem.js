@@ -4,9 +4,7 @@ exports.CartItem = function(Sequelize, sequelize){
     ciid: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true }, 
     hid: Sequelize.INTEGER,
     pid: Sequelize.INTEGER,
-    cinumber: Sequelize.INTEGER,
-    createdAt: Sequelize.DATE,
-    updateAt: Sequelize.DATE
+    cinumber: Sequelize.INTEGER
 
   },{
     tableName: 'CartItem'

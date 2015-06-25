@@ -71,7 +71,7 @@
       </counter>
       <counter>
         <item-type stereotype="" type="AbstractElementGroup" />
-        <value>25</value>
+        <value>33</value>
       </counter>
       <counter>
         <item-type stereotype="" type="Flow" />
@@ -207,9 +207,6 @@
               <attribute uid="ae71f4ae6f891418fab5ee4ccb8d16f0f277" cid="ELEM015" name="cbirthday" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="a80392d63097d45a8aa533889e3a6d6bb753" cid="ELEM024" name="cgroup" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
-                <style class="default" />
-              </attribute>
             </attributes>
             <indexes />
           </item>
@@ -245,13 +242,13 @@
             <style class="default" />
             <entity />
             <attributes>
-              <attribute uid="ad2bbe681d7a543409799ba8945b08620664" cid="ELEM006" name="sid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="ad2bbe681d7a543409799ba8945b08620664" cid="ELEM006" name="hsid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="acc83a7aee8a64b68916850e94aa324fb336" cid="ELEM007" name="stime" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="acc83a7aee8a64b68916850e94aa324fb336" cid="ELEM007" name="htime" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="a9a25ee881c414f99ac220534dde4665b414" cid="ELEM008" name="scid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="a9a25ee881c414f99ac220534dde4665b414" cid="ELEM008" name="cid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
             </attributes>
@@ -485,9 +482,9 @@
             <role-positions start-role="25,15" end-role="25,-15" />
           </item>
           <item id="di496019363840434581" iid="fea42291f9a943b8aa786a7a6a044d91" creation-date="06/18/2015 11:44:34" order-index="5" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="true" name-position="10,-10" auto-path="" x1="366" y1="425" x2="269" y2="425" start-border-pos="0.875" end-border-pos="0.375">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="true" name-position="10,-10" auto-path="" x1="366" y1="428" x2="269" y2="425" start-border-pos="0.8703125" end-border-pos="0.375">
               <points>
-                <point x="366" y="425" />
+                <point x="366" y="428" />
                 <point x="269" y="425" />
               </points>
             </layout>

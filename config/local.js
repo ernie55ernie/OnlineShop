@@ -25,11 +25,11 @@ module.exports = {
 
 	model: {
 		mysql : {
-			database: "a4050679_shop",
-			account : "a4050679_shop",
-			password: "shop1shop",
+			database: "sql681800",
+			account : "sql681800",
+			password: "nE4*wG1*",
 			options : {
-				host    : "mysql8.000webhost.com",
+				host    : "sql6.freesqldatabase.com",
 				logging : false
 			}
 		},

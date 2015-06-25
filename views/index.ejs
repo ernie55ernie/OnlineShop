@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<title>OnlineShop</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1, width = device-width, user-scalable = 0">
 	<link rel="stylesheet" type="text/css" href="css/grid-fluid-12.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
-<body>
+<body ng-controller="AppCtrl">
     <div id="wrap1" class="container_12">
         <div id="top" class="container_12">
             <div class="form-group">
@@ -18,10 +19,20 @@
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
 
-            <input type="filepicker" data-fp-apikey="AfDUcO2yfT4yVBX9p2t4Xz" data-fp-mimetypes="text/comma-separated-values, text/csv, application/csv, application/excel, application/vnd.ms-excel, application/vnd.msexcel, text/anytext" data-fp-container="modal" onchange="alert(event.fpfile.url)">
+            <input type="filepicker" data-fp-apikey="AfDUcO2yfT4yVBX9p2t4Xz" data-fp-mimetypes="text/comma-separated-values, text/csv, application/csv, application/excel, application/vnd.ms-excel, application/vnd.msexcel, text/anytext" data-fp-container="modal" onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();">
+
         </div>
     </div>
 
     <script "text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="../js/lib/angular-ui-router.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/services.js"></script>
+    <script src="../js/controllers.js"></script>
+    <script src="../js/filters.js"></script>
+    <script src="../js/directives.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('AppCtrl', function ($scope, $http) {
+  controller('AppCtrl', function ($rootScope, $window, $scope, $http) {
 
     $http({
       method: 'GET',
@@ -16,13 +16,11 @@ angular.module('myApp.controllers', []).
       $scope.name = 'Error!';
     });
 
-    $scope.upload = function(){
-      filepicker.setKey("AfDUcO2yfT4yVBX9p2t4Xz");
-      filepicker.pickAndStore({mimetype:"image/*"},{},
-        function(InkBlobs){
-          console.log(JSON.stringify(InkBlobs));
-      });
-    }
+    $scope.saveCsv = function(){
+        $http({method:"POST", url:"/api/csvfile", data:InkBlob}).success(function(post){
+          console.log(post);
+        });
+    };
 
   }).
   controller('MyCtrl1', function ($scope) {
