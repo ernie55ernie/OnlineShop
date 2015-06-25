@@ -3,27 +3,94 @@
 <head>
 	<title>OnlineShop</title>
 	<meta charset="utf-8">
+    <base href="/">
+
 	<meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1, width = device-width, user-scalable = 0">
 	<link rel="stylesheet" type="text/css" href="css/grid-fluid-12.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body ng-controller="AppCtrl">
-    <div id="wrap1" class="container_12">
-        <div id="top" class="container_12">
-            <div class="form-group">
-                
-            </div>
-            <div class="form-group">
-                
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
 
-            <input type="filepicker" data-fp-apikey="AfDUcO2yfT4yVBX9p2t4Xz" data-fp-mimetypes="text/comma-separated-values, text/csv, application/csv, application/excel, application/vnd.ms-excel, application/vnd.msexcel, text/anytext" data-fp-container="modal" onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();">
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+            <img alt="Brand" class="glyphicon glyphicon-shopping-cart
+">
+        </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Product <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Analysis</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+      <form class="navbar-form navbar-right" role="login">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Username">
+          <input type="text" class="form-control" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Login</button>
+      </form>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <!--
+    <div id="wrap1">
+        <div id="top" class="container_12">
+            <div class="grid_6">
+                <img src="img/Online_Shop_Logo.24535510_std.png">
+            </div>
+            <div class="grid_2">
+                <input placeholder="Email">
+            </div>
+            <div class="grid_2">
+                <input placeholder="Password">
+            </div>
+            <div class="grid_2">
+                <button>Sign in</button>
+            </div>
+            <input type="filepicker" data-fp-apikey="AfDUcO2yfT4yVBX9p2t4Xz" data-fp-mimetypes="text/comma-separated-values, text/csv, application/csv, application/excel, application/vnd.ms-excel, application/vnd.msexcel, text/anytext" data-fp-container="modal" onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv(event.fpfile.url);">
 
         </div>
     </div>
+-->
 
+
+    <section ui-view></section>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script "text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>

@@ -34,17 +34,20 @@ module.exports = {
 			}
 		},
 		mongo : {
-			database: "",
+			database: "shoppingprobability",
 			options : {
-				host: ""
+				host: "ds045882.mongolab.com:45882",
+				username: "adminshopping",
+				password: "shoppingadmin"
 			}
 		}
 	},
 
 	session: {
 		redis: {
-			host: 'ck6tp6m4-dm_final-1566920',
-			port: 6379
+			host: 'pub-memcache-11842.us-east-1-1.2.ec2.garantiadata.com:11842',
+			port: 11080,
+			pass: "adminshopping"
 		}
     }
 

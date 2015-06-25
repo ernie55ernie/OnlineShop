@@ -22,6 +22,6 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
       controller: 'MyCtrl2'
     });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/view1');
     $locationProvider.html5Mode(true);
 }]);
