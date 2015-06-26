@@ -106,9 +106,14 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
     }
 
   }).
-  controller('ProductCtrl', function ($scope) {
+  controller('ProductCtrl', function ($scope , $http) {
     // write Ctrl here
-
+    $scope.pagenum = 0;
+    $http({method:"GET", url:"/getproducts"}).success(function(products){
+          $scope.products = products;
+          $scope.pagenum = (products.length-4)/6;
+          console.log(products);
+      });
   }).
   controller('SignupCtrl', function ($scope) {
     // write Ctrl here
