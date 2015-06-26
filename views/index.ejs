@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html style="background-attachment: scroll;">
 <head>
 	<title>OnlineShop</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1, width = device-width, user-scalable = 0">
 	<link rel="stylesheet" type="text/css" href="css/grid-fluid-12.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body>
-    <div id="wrap1">
-        <div id="top" class="container_12">
-            <div class="grid_6">
-                <img src="img/Online_Shop_Logo.24535510_std.png">
-            </div>
-            <div class="grid_2">
-                <input placeholder="Email">
-            </div>
-            <div class="grid_2">
-                <input placeholder="Password">
-            </div>
-            <div class="grid_2">
-                <button>Sign in</button>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">Online Shop</a>
+            <button>Sign in</button>
+            <input placeholder="Password">
+            <input placeholder="Account">
+            <div class="navbar-right">
+                <div class="container minicart"></div>
             </div>
         </div>
+    </nav>
+    <div class="container text-center">
+        <div class="col-md-5 col-sm-12">
+            <div class="bigcart"></div>
+            <h1>Recommended Goods</h1>
+        </div>
+        
+        
     </div>
 </body>
 </html>
