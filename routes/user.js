@@ -1,5 +1,7 @@
 var User = require('../models').User;
 var Customer = require('../models').Customer;
+var Group = require('../models').Group;
+var GroupRelationShip = require('../models').GroupRelationShip;
 
 var local = require("../config/local");
 var Sequelize = require('sequelize');
