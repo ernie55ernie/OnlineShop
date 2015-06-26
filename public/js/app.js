@@ -11,25 +11,24 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
   $stateProvider.
-    state('/product', {
-      url:'/product',
+    state('/view1', {
+      url:'/view1',
       templateUrl: 'partials/product',
       controller: 'ProductCtrl'
     }).
-    state('/createhistory', {
-      url:'/createhistory',
+    state('/view2', {
+      url:'/view2',
       templateUrl: 'partials/createhistory',
       controller: 'CreateHistoryCtrl'
     }).
-    state('/loadhistory', {
-      url:'/loadhistory',
+    state('/view3', {
+      url:'/view3',
       templateUrl: 'partials/loadhistory',
       controller: 'LoadHistoryCtrl'
     }).
-    state('/signup', {
-      url:'/signup',
+    state('/view4', {
+      url:'/view4',
       templateUrl: 'partials/signup',
-<<<<<<< HEAD
       controller: 'MyCtrl4'
     }).
     state('/view5', {
@@ -41,9 +40,11 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
       url:'/view6',
       templateUrl: 'partials/history',
       controller: 'MyCtrl6'
-=======
-      controller: 'SignupCtrl4'
->>>>>>> 2679452335f90803516601afb08b568ddd2d32e1
+    }).
+    state('/view7', {
+      url:'/view7',
+      templateUrl: 'partials/search',
+      controller: 'MyCtrl7'
     });
 
     $urlRouterProvider.otherwise('/product');
