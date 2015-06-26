@@ -10,6 +10,7 @@
     "express-session": "^1.11.3",
     "filepicker": "^0.2.0",
     "method-override": "^1.0.0",
+    "mongodb": "^2.0.35",
     "morgan": "^1.0.0",
     "mysql": "^2.7.0",
     "passport": "^0.2.2",
