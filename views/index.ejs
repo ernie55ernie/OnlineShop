@@ -15,8 +15,8 @@
     <script>
         var isLogin = <%- isLogin ? 'true' : 'false'%>;
         if(isLogin){
-            var userId = "<%- User.cid %>";
-            var userName = "<%- User.cname %>";
+            var userId = "<%- User.uid %>";
+            var userName = "<%- User.username %>";
             var userGender = "<%- User.cgender %>"
             var userBirthday = "<%- User.cbirthday %>";
             var userAccount = "<%- User.caccount %>";
@@ -57,11 +57,14 @@
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
                 <ul class="navbar-form navbar-right" role="login">
+                    <div ng-hide="$root.isLogin">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Username" ng-model="username">
                         <input type="password" class="form-control" placeholder="Password" ng-model="password">
                     </div>
-                    <button type="submit" class="btn btn-default" ng-click="Login()">Login</button>
+                    <button class="btn btn-default" ng-click="Login()">Login</button>
+                    </div>
+                    <a class="btn btn-default" target="_self" href="/logout" ng-show="$root.isLogin">Logout</a>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

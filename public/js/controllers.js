@@ -62,8 +62,10 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
         password:$scope.password
       }
       $http({method:"POST", url:"/login", data:data}).success(function(post){
-          console.log(post);
+          // console.log(post);
           if(post.msg!="success"){ 
+            alert(post.msg);
+          }else{
             alert(post.msg);
           }
           // console.log("success");
@@ -73,11 +75,21 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
     }
 
   }).
-  controller('MyCtrl1', function ($scope) {
+  controller('LoadHistoryCtrl', function ($scope) {
+    $scope.saveCsv = function(csvurl){
+      var data = {
+        "csvurl": csvurl
+      };
+      $http({method:"POST", url:"/api/savecsv", data:data}).success(function(post){
+          console.log(post);
+      });
+    };
+  }).
+  controller('CreateHistoryCtrl', function ($scope) {
     // write Ctrl here
 
   }).
-  controller('MyCtrl2', function ($scope) {
+  controller('ProductCtrl', function ($scope) {
     // write Ctrl here
 
   });

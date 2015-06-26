@@ -2,6 +2,7 @@ var User = require('../models').User;
 var Customer = require('../models').Customer;
 var Group = require('../models').Group;
 var GroupRelationShip = require('../models').GroupRelationShip;
+var _ = require('underscore');
 
 var local = require("../config/local");
 var Sequelize = require('sequelize');
@@ -19,18 +20,20 @@ exports.login = function(req, res){
       password: req.body.password
     }
   }
+  //console.log(query);
   User.sync().then(function() {
     // here comes your find command.
       User.find(query).then(function(result){
+            //console.log(result);
             if(result){
-              // res.end("fail");
-              res.json({msg:"No user!"});
-            }
-            else{
               var user = _.omit(result.dataValues, 'password', 'createdAt', 'updatedAt');
               req.session.user = user;
               req.session.isLogin = true;
-              res.json({msg:"success"});
+              res.json({msg:"Login success! Welcome " + user.username});
+            }
+            else{
+              // res.end("fail");
+              res.json({msg:"No user!"});
             }
           })
       })
