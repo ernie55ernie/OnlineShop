@@ -49,9 +49,9 @@ exports.getUsers = function(req, res){
 exports.getUser = function(req, res){
 	 User.sync().then(function() {
     // here comes your find command.
-      User.findAll({
+      User.find({
       	where: {
-      		username: req.params.username
+      		uid: req.params.uid
       	},
       	attributes: ['uid', 'username']
       }).then(function(result){
@@ -65,40 +65,55 @@ exports.createUser = function(req, res){
 		username: req.body.username,
 		password: req.body.password
 	}
-	User.sync().success(function() {
+	var uid = 0
+	User.sync().then(function() {
     // here comes your find command.
       User
       .build(user)
       .save()
-      .success(function(anotherTask) {
+      .then(function(anotherTask) {
         // you can now access the currently saved task with the variable anotherTask... nice!
         //res.send("respond with a resource");
         //res.json(anotherTask);
-      }).error(function(error) {
-        // Ooops, do some error-handling
-        console.log(error);
-      })
-  	})
-
-	var customer = {
-		cusername: req.body.username,
-		cgender: req.body.gender,
-		cbirthday: req.body.birthday,
-		caccount: getUser(req.body.username).uid,
-		cphoto: req.body.photo
-	}
-	Customer.sync().success(function() {
-    // here comes your find command.
-      Customer
-      .build(customer)
-      .save()
-      .success(function(anotherTask) {
-        // you can now access the currently saved task with the variable anotherTask... nice!
-        //res.send("respond with a resource");
-        //res.json(anotherTask);
-      }).error(function(error) {
+	    var customer = {
+			cusername: req.body.username,
+			cgender: req.body.gender,
+			cbirthday: req.body.birthday,
+			caccount: anotherTask.dataValues.uid,
+			cphoto: req.body.photo
+		}
+		Customer.sync().then(function() {
+	    // here comes your find command.
+	      Customer
+	      .build(customer)
+	      .save()
+	      .then(function(anotherTask) {
+	        // you can now access the currently saved task with the variable anotherTask... nice!
+	        //res.send("respond with a resource");
+	        res.json(anotherTask);
+	      }).catch(function(error) {
+	        // Ooops, do some error-handling
+	        console.log(error);
+	      })
+	  	})
+      }).catch(function(error) {
         // Ooops, do some error-handling
         console.log(error);
       })
   	})
 }
+
+exports.deleteUser = function(req, res){
+    var uid = req.params.uid;
+    User.destroy({where: {uid: uid}}).then(function(){
+        res.json({ message: 'User removed!' });
+    }).catch(function(err){
+        console.log(err);
+    })
+    Customer.destroy({where: {caccount: uid}}).then(function(){
+        res.json({ message: 'Customer removed!' });
+    }).catch(function(err){
+        console.log(err);
+    })
+
+};

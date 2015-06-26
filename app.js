@@ -19,7 +19,8 @@ var express = require('express'),
 
 var local = require('./config/local'),
     api = require('./routes/api'),
-    user = require('./routes/user');
+    user = require('./routes/user'),
+    product = require('./routes/product');
 
 var app = module.exports = express();
 
@@ -117,12 +118,21 @@ app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
 
 // Product
+app.get('/getproduct/:pid', product.getProduct);
+app.get('/getproducts', product.getProducts);
+app.post('/createproduct', product.createProduct);
+app.get('/deleteproduct/:pid', product.deleteProduct);
+app.get('/getcategory/:caid', product.getCategory);
+app.get('/getcategories', product.getCategories);
+app.post('/createcategory', product.createCategory);
+app.get('/deletecategory/:caid', product.deleteCategory);
 
-// User 
+// User or Customer
 app.post('/login', user.login);
-app.get('/getuser/:username', user.getUser);
+app.get('/getuser/:uid', user.getUser);
 app.get('/getusers', user.getUsers);
 app.post('/createuser', user.createUser);
+app.get('/deleteuser/:uid', user.deleteUser);
 app.get('/private', 
   passport.authenticate('digest', { session: false }),
   function(req, res) {
