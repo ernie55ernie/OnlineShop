@@ -13,8 +13,8 @@ var express = require('express'),
   http = require('http'),
   path = require('path'),
   session = require('express-session'),
-  passport = require('passport'),
-  DigestStrategy = require('passport-http').DigestStrategy,
+  //passport = require('passport'),
+  //DigestStrategy = require('passport-http').DigestStrategy,
   _ = require('underscore');
 
 var local = require('./config/local'),
@@ -24,7 +24,7 @@ var local = require('./config/local'),
 
 var app = module.exports = express();
 
-passport.serializeUser(function(user, done) {
+/*passport.serializeUser(function(user, done) {
   // console.log(user);
   done(null, user);
   });
@@ -45,7 +45,7 @@ passport.use(new DigestStrategy({ qop: 'auth' },
     // validate nonces as necessary
     done(null, true)
   }
-));
+));*/
 
 app.use(session({
   secret: "idontknow",
@@ -88,8 +88,8 @@ app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 var env = process.env.NODE_ENV || 'development';
 
@@ -135,12 +135,12 @@ app.get('/getuser/:uid', user.getUser);
 app.get('/getusers', user.getUsers);
 app.post('/createuser', user.createUser);
 app.get('/deleteuser/:uid', user.deleteUser);
-app.get('/private', 
+/*app.get('/private', 
   passport.authenticate('digest', { session: false }),
   function(req, res) {
     res.json(req.user);
   });
-
+*/
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 

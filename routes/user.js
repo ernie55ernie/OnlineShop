@@ -23,7 +23,7 @@ exports.login = function(req, res){
     // here comes your find command.
       User.find(query).then(function(result){
             if(result){
-              res.end("fail");
+              // res.end("fail");
               res.json({msg:"No user!"});
             }
             else{
