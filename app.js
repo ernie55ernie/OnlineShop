@@ -116,6 +116,8 @@ app.get('/partials/:name', routes.partials);
 app.get('/api/name', api.name);
 app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
+app.get('/api/csvNumber', api.csvNumber);
+app.get('/api/csvtojson', api.csvToJson);
 
 // Product
 app.get('/getproduct/:pid', product.getProduct);
