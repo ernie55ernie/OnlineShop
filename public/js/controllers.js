@@ -24,8 +24,8 @@ angular.module('myApp.controllers', ['ngRoute']).
       userName: $window.userName,
       userGender: $window.userGender,
       userBirthday: $window.userBirthday,
-      userAccount: $window.userAccount,
-      userPhoto: $window.userPhoto
+      userPhoto: $window.userPhoto,
+      userEmail: $window.userEmail
     };
 /*
     $rootScope.$watch('lang',function(newValue, oldValue){   

@@ -29,7 +29,7 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
     state('/signup', {
       url:'/signup',
       templateUrl: 'partials/signup',
-      controller: 'SignupCtrl4'
+      controller: 'SignupCtrl'
     });
 
     $urlRouterProvider.otherwise('/product');

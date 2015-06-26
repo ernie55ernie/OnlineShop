@@ -16,11 +16,11 @@
         var isLogin = <%- isLogin ? 'true' : 'false'%>;
         if(isLogin){
             var userId = "<%- User.uid %>";
-            var userName = "<%- User.username %>";
+            var userName = "<%- User.cusername %>";
             var userGender = "<%- User.cgender %>"
             var userBirthday = "<%- User.cbirthday %>";
-            var userAccount = "<%- User.caccount %>";
             var userPhoto = "<%- User.cphoto %>";
+            var userEmail = "<%- User.cemail %>";
         }
     </script>
 </head>
@@ -70,6 +70,11 @@
         </div><!-- /.container-fluid -->
     </nav>
     <section ui-view></section>
+    <a href="#" ng-bind="$root.user.userId || '訪客'"></a>
+    <a href="#" ng-bind="$root.user.userGender || '訪客'"></a>
+    <a href="#" ng-bind="$root.user.userBirthday || '訪客'"></a>
+    <a href="#" ng-bind="$root.user.userPhoto || '訪客'"></a>
+    <a href="#" ng-bind="$root.user.userEmail || '訪客'"></a>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
