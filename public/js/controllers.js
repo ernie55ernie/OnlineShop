@@ -96,4 +96,16 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
   controller('SignupCtrl', function ($scope) {
     // write Ctrl here
 
+  }).
+  controller('ProfileMyCtrl', function ($scope) {
+    // write Ctrl here
+
+  }).
+  controller('SearchMyCtrl', function ($scope) {
+    // write Ctrl here
+
+  }).
+  controller('HistoryMyCtrl', function ($scope) {
+    // write Ctrl here
+
   });
