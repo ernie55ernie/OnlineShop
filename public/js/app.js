@@ -11,27 +11,27 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
   $stateProvider.
-    state('/view1', {
-      url:'/view1',
+    state('/product', {
+      url:'/product',
       templateUrl: 'partials/product',
-      controller: 'MyCtrl1'
+      controller: 'ProductCtrl'
     }).
-    state('/view2', {
-      url:'/view2',
+    state('/createhistory', {
+      url:'/createhistory',
       templateUrl: 'partials/createhistory',
-      controller: 'MyCtrl2'
+      controller: 'CreateHistoryCtrl'
     }).
-    state('/view3', {
-      url:'/view3',
+    state('/loadhistory', {
+      url:'/loadhistory',
       templateUrl: 'partials/loadhistory',
-      controller: 'MyCtrl3'
+      controller: 'LoadHistoryCtrl'
     }).
-    state('/view4', {
-      url:'/view4',
+    state('/signup', {
+      url:'/signup',
       templateUrl: 'partials/signup',
-      controller: 'MyCtrl4'
+      controller: 'SignupCtrl4'
     });
 
-    $urlRouterProvider.otherwise('/view1');
+    $urlRouterProvider.otherwise('/product');
     $locationProvider.html5Mode(true);
 }]);
