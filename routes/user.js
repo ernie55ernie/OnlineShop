@@ -1,5 +1,7 @@
 var User = require('../models').User;
 var Customer = require('../models').Customer;
+var Group = require('../models').Group;
+var GroupRelationShip = require('../models').GroupRelationShip;
 
 var local = require("../config/local");
 var Sequelize = require('sequelize');
@@ -21,7 +23,7 @@ exports.login = function(req, res){
     // here comes your find command.
       User.find(query).then(function(result){
             if(result){
-              res.end("fail");
+              // res.end("fail");
               res.json({msg:"No user!"});
             }
             else{
