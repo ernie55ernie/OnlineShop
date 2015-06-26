@@ -2,6 +2,10 @@
     <div class="page-header">
     	<h1>Create History</h1>
     </div>
+    <div class="form-group">
+      <label for="usr">Kinds of Products:</label>
+      <input type="text" class="form-control" id="usr" ng-model="kinds">
+    </div>
     <table class="table table-striped">
         <thead>
         	<tr>
@@ -12,18 +16,19 @@
     	    </tr>
         </thead>
     	<tbody>
-    		<tr>
-    		    <th><img style="width: 100px; height: 72px" src="img/skin1.jpg"></th>
-    		    <th>skin no.1</th>
-    		    <th>270</th>
-    		    <th><input type="text" placeholder="Chance"></th>
+    		<tr ng-repeat="a in product track by $index">
+    		    <th><img style="width: 100px; height: 72px" ng-src="{{products[$index].pimage}}"></th>
+    		    <th>{{products[$index].pname}}</th>
+    		    <th>{{products[$index].pprice}}</th>
+    		    <th><input type="text" placeholder="Chance" ng-model="shoppinglist[$index].prob"></th>
     	    </tr>
-    	    <tr>
+<!--     	    <tr>
     		    <th><img style="width: 100px; height: 72px" src="img/skin2.jpg"></th>
     		    <th>skin no.2</th>
     		    <th>270</th>
     		    <th><input type="text" placeholder="Chance"></th>
-    	    </tr>
+    	    </tr> -->
     	</tbody>
     </table>
+    <button type="button" class="btn btn-primary btn-lg" ng-click="submit()">Submit</button>
 </div>

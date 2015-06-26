@@ -10,6 +10,7 @@ var express = require('express'),
   morgan = require('morgan'),
   routes = require('./routes'),
   api = require('./routes/api'),
+  generateList = require('./routes/generateList'),
   http = require('http'),
   path = require('path'),
   session = require('express-session'),
@@ -128,6 +129,10 @@ app.get('/getcategory/:caid', product.getCategory);
 app.get('/getcategories', product.getCategories);
 app.post('/createcategory', product.createCategory);
 app.get('/deletecategory/:caid', product.deleteCategory);
+
+// GenerateList
+app.post('/generatelist', generateList.generateList);
+
 
 // User or Customer
 app.post('/login', user.login);
