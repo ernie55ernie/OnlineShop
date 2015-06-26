@@ -23,6 +23,14 @@
         <item-type stereotype="" type="UmlUseCase" />
         <value>10</value>
       </counter>
+      <counter>
+        <item-type stereotype="" type="Process" />
+        <value>7</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="Decision" />
+        <value>1</value>
+      </counter>
     </entity-names>
     <entity-ids>
       <counter>
@@ -51,15 +59,27 @@
       </counter>
       <counter>
         <item-type stereotype="" type="UmlComment" />
-        <value>3</value>
+        <value>4</value>
       </counter>
       <counter>
         <item-type stereotype="" type="UmlCommentConnector" />
-        <value>3</value>
+        <value>4</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="Process" />
+        <value>8</value>
       </counter>
       <counter>
         <item-type stereotype="" type="AbstractElementGroup" />
-        <value>16</value>
+        <value>33</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="Flow" />
+        <value>6</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="Decision" />
+        <value>2</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -71,11 +91,15 @@
         <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlUseCaseDiagram</type>
         <value>1</value>
       </counter>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.Other.FlowchartDiagram</type>
+        <value>2</value>
+      </counter>
     </diagrams>
     <fields>
       <counter>
         <type>SoftwareIdeasModeler.Core.DiagramItems.ErdItems.ErdEntityAttribute</type>
-        <value>34</value>
+        <value>36</value>
       </counter>
     </fields>
   </counters>
@@ -159,7 +183,7 @@
           </authors>
           <description />
           <creation-date>06/18/2015 11:35:16</creation-date>
-          <change-date>06/25/2015 11:00:26</change-date>
+          <change-date>06/25/2015 11:15:21</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
@@ -181,9 +205,6 @@
                 <style class="default" />
               </attribute>
               <attribute uid="ae71f4ae6f891418fab5ee4ccb8d16f0f277" cid="ELEM015" name="cbirthday" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
-                <style class="default" />
-              </attribute>
-              <attribute uid="a80392d63097d45a8aa533889e3a6d6bb753" cid="ELEM024" name="cgroup" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
             </attributes>
@@ -208,6 +229,9 @@
               <attribute uid="ae0c4da6111c14e68805a7dbe37e410f2551" cid="ELEM028" name="pcreatAt" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
+              <attribute uid="a95b5529246114dc0a7621b1c11bbeab9465" cid="ELEM034" name="pbought" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+                <style class="default" />
+              </attribute>
             </attributes>
             <indexes />
           </item>
@@ -218,13 +242,13 @@
             <style class="default" />
             <entity />
             <attributes>
-              <attribute uid="ad2bbe681d7a543409799ba8945b08620664" cid="ELEM006" name="sid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="ad2bbe681d7a543409799ba8945b08620664" cid="ELEM006" name="hsid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="acc83a7aee8a64b68916850e94aa324fb336" cid="ELEM007" name="stime" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="acc83a7aee8a64b68916850e94aa324fb336" cid="ELEM007" name="htime" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="a9a25ee881c414f99ac220534dde4665b414" cid="ELEM008" name="scid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="a9a25ee881c414f99ac220534dde4665b414" cid="ELEM008" name="cid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
             </attributes>
@@ -333,6 +357,9 @@
               <attribute uid="a3b8a184e9b17433fbc0155951e8157a4606" cid="ELEM022" name="gid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
+              <attribute uid="a0069bdd101384592886babc6f499d4a4924" cid="ELEM035" name="gcomment" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+                <style class="default" />
+              </attribute>
             </attributes>
             <indexes />
           </item>
@@ -417,10 +444,10 @@
             <style class="default" />
             <entity />
             <attributes>
-              <attribute uid="abd3761c3f1cd4edc851b8eb46d11e936534" cid="ELEM030" name="csvid" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="abd3761c3f1cd4edc851b8eb46d11e936534" cid="ELEM030" name="csvid" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="a966e221b548742f8bf1b144f0e210d41759" cid="ELEM031" name="csvurl" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="a966e221b548742f8bf1b144f0e210d41759" cid="ELEM031" name="csvurl" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
             </attributes>
@@ -445,9 +472,9 @@
             <erd-entity show-nullability="true" />
           </item>
           <item id="di487054357298633353" iid="66e6c0fa84824b2db294bd580224d57f" creation-date="06/18/2015 11:44:21" order-index="4" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="true" name-position="10,-10" auto-path="" x1="556" y1="396" x2="639" y2="289" start-border-pos="0.3296875" end-border-pos="0.69960399426912">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="true" name-position="10,-10" auto-path="" x1="548" y1="345" x2="639" y2="289" start-border-pos="0.23952243202611" end-border-pos="0.69960399426912">
               <points>
-                <point x="556" y="396" />
+                <point x="548" y="345" />
                 <point x="639" y="289" />
               </points>
             </layout>
@@ -701,6 +728,162 @@
           <item id="di528111720449778165" iid="aceeb84b50cd4e839923e7f5c81926e7" container="di102992487151293401" container-iid="7b73f96bef3c4402a34c5daa9a3e959d" creation-date="06/18/2015 12:02:01" order-index="16" type="entity">
             <layout ax="548" ay="347" awidth="120" aheight="75" x="548" y="347" width="120" height="75" angle="0" />
             <use-case />
+          </item>
+        </layer>
+      </diagram>
+      <diagram type="flowchart" id="p555955789447901729" name="FlowcharUser" order-index="3" overview-order-index="1" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" auto-routed-paths="false">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>06/25/2015 11:10:06</creation-date>
+          <change-date>06/25/2015 11:12:22</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="di515105162136956091" cid="FCP001" type="flowchart-process" name="Web site" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:10:11">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+          <item id="di969753414563507090" cid="FCP002" type="flowchart-process" name="Login" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:10:27">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+          <item id="di938564221422396868" cid="FCP003" type="flowchart-process" name="Product" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:10:43">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+          <item id="di817089945546539598" cid="FCF002" type="flowchart-flow" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:12:19">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+          <item id="di309724739907603573" cid="FCF003" type="flowchart-flow" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:12:22">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+        </abstract-items>
+        <layer name="Default" visible="true" enabled="true" locked="false">
+          <item id="di515105162136956091" iid="320bd62ed2894e0d87c657782dd507b3" creation-date="06/25/2015 11:10:11" order-index="0" type="entity">
+            <layout ax="217" ay="178" awidth="150" aheight="60" x="217" y="178" width="150" height="60" angle="0" />
+          </item>
+          <item id="di969753414563507090" iid="047cad61883942d9b2c4d1177ffa47a9" creation-date="06/25/2015 11:10:27" order-index="1" type="entity">
+            <layout ax="417" ay="178" awidth="150" aheight="60" x="417" y="178" width="150" height="60" angle="0" />
+          </item>
+          <item id="di938564221422396868" iid="6668f608ea914c72b452bcdd5eed429e" creation-date="06/25/2015 11:10:43" order-index="2" type="entity">
+            <layout ax="617" ay="178" awidth="150" aheight="60" x="617" y="178" width="150" height="60" angle="0" />
+          </item>
+          <item id="di817089945546539598" iid="e57e57c1491046df9096c17312b8bc87" creation-date="06/25/2015 11:12:19" order-index="3" type="relation">
+            <layout line-style="oblique" lock-start-point="true" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="367" y1="214" x2="417" y2="212" start-border-pos="0.4" end-border-pos="0.859999974568685">
+              <points>
+                <point x="367" y="214" />
+                <point x="417" y="212" />
+              </points>
+            </layout>
+            <relation from="di515105162136956091" from-iid="320bd62ed2894e0d87c657782dd507b3" to="di969753414563507090" to-iid="047cad61883942d9b2c4d1177ffa47a9" />
+          </item>
+          <item id="di309724739907603573" iid="1487f3f4ff21477d8415b92468c11e30" creation-date="06/25/2015 11:12:22" order-index="4" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="567" y1="208" x2="617" y2="208" start-border-pos="0.375" end-border-pos="0.875">
+              <points>
+                <point x="567" y="208" />
+                <point x="617" y="208" />
+              </points>
+            </layout>
+            <relation from="di969753414563507090" from-iid="047cad61883942d9b2c4d1177ffa47a9" to="di938564221422396868" to-iid="6668f608ea914c72b452bcdd5eed429e" />
+          </item>
+        </layer>
+      </diagram>
+      <diagram type="flowchart" id="p321587596769473664" name="FlowcharSystem" order-index="4" overview-order-index="2" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" auto-routed-paths="false">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>06/25/2015 11:12:32</creation-date>
+          <change-date>06/25/2015 11:13:42</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="di198347280766729159" cid="FCP006" type="flowchart-process" name="Default " style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:13:00">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+          <item id="di539011227861086982" cid="FCDC001" type="flowchart-decision" name="History exist?" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:13:10">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+          <item id="di896477899764422932" cid="FCF004" type="flowchart-flow" name="no" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:13:25">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+          <item id="di321416727306782271" cid="FCP007" type="flowchart-process" name="Recommand" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:13:34">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+          <item id="di749480685288461019" cid="FCF005" type="flowchart-flow" name="yes" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" visibility="package" creation-date="06/25/2015 11:13:42">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+        </abstract-items>
+        <layer name="Default" visible="true" enabled="true" locked="false">
+          <item id="di198347280766729159" iid="ddde21430efe4c45bc17237e7401a4db" creation-date="06/25/2015 11:13:00" order-index="0" type="entity">
+            <layout ax="175" ay="342" awidth="150" aheight="60" x="175" y="342" width="150" height="60" angle="0" />
+          </item>
+          <item id="di539011227861086982" iid="cf719ca5c9184f04a992b283785c467f" creation-date="06/25/2015 11:13:10" order-index="1" type="entity">
+            <layout ax="175" ay="149" awidth="118" aheight="100" x="175" y="149" width="118" height="100" angle="0" />
+          </item>
+          <item id="di896477899764422932" iid="b0a8536fa8a34c45a4a184629ce7d8db" creation-date="06/25/2015 11:13:25" order-index="2" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="false" name-position="10,-10" auto-path="" x1="235" y1="249" x2="237" y2="342" start-border-pos="0.622777647891287" end-border-pos="0.103333333333333">
+              <points>
+                <point x="235" y="249" />
+                <point x="237" y="342" />
+              </points>
+            </layout>
+            <relation from="di539011227861086982" from-iid="cf719ca5c9184f04a992b283785c467f" to="di198347280766729159" to-iid="ddde21430efe4c45bc17237e7401a4db" />
+          </item>
+          <item id="di321416727306782271" iid="f828fae0930e493f86006ac6f90c3114" creation-date="06/25/2015 11:13:34" order-index="3" type="entity">
+            <layout ax="393" ay="169" awidth="150" aheight="60" x="393" y="169" width="150" height="60" angle="0" />
+          </item>
+          <item id="di749480685288461019" iid="fba22b9503f54988a9082d9afd27d2b9" creation-date="06/25/2015 11:13:42" order-index="4" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="293" y1="199" x2="393" y2="199" start-border-pos="0.375" end-border-pos="0.875">
+              <points>
+                <point x="293" y="199" />
+                <point x="393" y="199" />
+              </points>
+            </layout>
+            <relation from="di539011227861086982" from-iid="cf719ca5c9184f04a992b283785c467f" to="di321416727306782271" to-iid="f828fae0930e493f86006ac6f90c3114" />
           </item>
         </layer>
       </diagram>

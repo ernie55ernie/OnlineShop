@@ -1,6 +1,13 @@
 // hostname: ck6tp6m4-dm_final-1566920
 // port: 3306
 // username: ck6tp6m4
+/*
+$mysql_host = "mysql8.000webhost.com";
+$mysql_database = "a4050679_shop";
+$mysql_user = "a4050679_shop";
+$mysql_password = "shop1shop";
+*/
+
 var sslEnabled = false;
 var path  = require('path');
 
@@ -18,26 +25,29 @@ module.exports = {
 
 	model: {
 		mysql : {
-			database: "",
-			account : "ck6tp6m4",
-			password: "",
+			database: "sql681800",
+			account : "sql681800",
+			password: "nE4*wG1*",
 			options : {
-				host    : "ck6tp6m4-dm_final-1566920",
+				host    : "sql6.freesqldatabase.com",
 				logging : false
 			}
 		},
 		mongo : {
-			database: "SDM",
+			database: "shoppingprobability",
 			options : {
-				host: "127.0.0.1"
+				host: "ds045882.mongolab.com:45882",
+				username: "adminshopping",
+				password: "shoppingadmin"
 			}
 		}
 	},
 
 	session: {
 		redis: {
-			host: 'localhost',
-			port: 6379
+			host: 'pub-memcache-11842.us-east-1-1.2.ec2.garantiadata.com:11842',
+			port: 11080,
+			pass: "adminshopping"
 		}
     }
 
