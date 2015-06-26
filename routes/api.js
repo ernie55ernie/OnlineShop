@@ -11,6 +11,7 @@ var sequelize = new Sequelize(
 		local.model.mysql.password,
 		local.model.mysql.options
 );
+var request = require('request');
 
 exports.name = function (req, res) {
   res.json({
@@ -28,7 +29,40 @@ exports.csvNumber = function(req, res){
 };
 
 exports.csvToJson = function(req, res){
-
+  var csvurl = req.body.csvurl;
+  request(csvurl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //console.log(body); // Show the csv. 
+      //var data = body;//.replace("/客/g", "").replace("/品/g", "");
+      //console.log(JSON.stringify(body));
+      var string = JSON.stringify(body).replace(/客/g, "").replace(/品/g, "").replace(/"/g, "");
+      console.log(string);
+      var split = string.split('\\n');
+      var i;
+      var array = [];
+      for(i = 0; i < split.length; i++){
+        var comma = split[i].split(',');
+        var shoppingList = [];
+        var j;
+        for(j = 1; j < comma.length; j++){
+          var productJson = {};
+          productJson = {
+            "PID": comma[j],
+            "Amount": 1
+          };
+          shoppingList.push(productJson);
+        }
+        var jsonObject = {
+          SID: 0,
+          CID: comma[0],
+          ShoppingList: shoppingList,
+          Time: "2015-06-26 00:00:00"
+        };
+        array.push(jsonObject);
+      }
+      res.json(array);
+    }
+  })
 };
 
 exports.checkLogin = function(req, res, next){
