@@ -24,8 +24,8 @@ angular.module('myApp.controllers', ['ngRoute']).
       userName: $window.userName,
       userGender: $window.userGender,
       userBirthday: $window.userBirthday,
-      userAccount: $window.userAccount,
-      userPhoto: $window.userPhoto
+      userPhoto: $window.userPhoto,
+      userEmail: $window.userEmail
     };
 /*
     $rootScope.$watch('lang',function(newValue, oldValue){   
@@ -107,6 +107,22 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
 
   }).
   controller('ProductCtrl', function ($scope) {
+    // write Ctrl here
+
+  }).
+  controller('SignupCtrl', function ($scope) {
+    // write Ctrl here
+
+  }).
+  controller('ProfileMyCtrl', function ($scope) {
+    // write Ctrl here
+
+  }).
+  controller('SearchMyCtrl', function ($scope) {
+    // write Ctrl here
+
+  }).
+  controller('HistoryMyCtrl', function ($scope) {
     // write Ctrl here
 
   });

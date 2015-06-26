@@ -29,7 +29,22 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
     state('/signup', {
       url:'/signup',
       templateUrl: 'partials/signup',
-      controller: 'SignupCtrl4'
+      controller: 'SignupCtrl'
+    }).
+    state('/profile', {
+      url:'/profile',
+      templateUrl: 'partials/profile',
+      controller: 'MyCtrl5'
+    }).
+    state('/history', {
+      url:'/history',
+      templateUrl: 'partials/history',
+      controller: 'HistoryMyCtrl'
+    }).
+    state('/search', {
+      url:'/search',
+      templateUrl: 'partials/search',
+      controller: 'SearchMyCtrl'
     });
 
     $urlRouterProvider.otherwise('/product');

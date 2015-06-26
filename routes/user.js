@@ -20,16 +20,26 @@ exports.login = function(req, res){
       password: req.body.password
     }
   }
-  //console.log(query);
+  console.log(query);
   User.sync().then(function() {
     // here comes your find command.
       User.find(query).then(function(result){
             //console.log(result);
             if(result){
-              var user = _.omit(result.dataValues, 'password', 'createdAt', 'updatedAt');
-              req.session.user = user;
-              req.session.isLogin = true;
-              res.json({msg:"Login success! Welcome " + user.username});
+              var uid = _.omit(result.dataValues,'username', 'password', 'createdAt', 'updatedAt', 'admin');
+              //console.log(uid);
+              Customer.sync().then(function() {
+              // here comes your find command.
+                Customer.find({
+                  where: uid
+                }).then(function(customer){
+                      //console.log(customer);
+                      req.session.user = customer;
+                      req.session.isLogin = true;
+                      res.json({msg:"Login success! Welcome " + customer.cusername});
+                    })
+               });
+              
             }
             else{
               // res.end("fail");
@@ -38,6 +48,28 @@ exports.login = function(req, res){
           })
       })
 
+};
+
+exports.getCustomers = function(req, res){
+   Customer.sync().then(function() {
+    // here comes your find command.
+      Customer.findAll().then(function(result){
+            res.json(result);
+          })
+      })
+};
+
+exports.getCustomer = function(req, res){
+   Customer.sync().then(function() {
+    // here comes your find command.
+      Customer.find({
+        where: {
+          uid: req.params.uid
+        }
+      }).then(function(result){
+            res.json(result);
+          })
+      })
 };
 
 exports.getUsers = function(req, res){

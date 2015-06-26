@@ -142,6 +142,8 @@ app.get('/logout', function(req, res){
     res.redirect("/");
   });
 });
+app.get('/getcustomer/:uid', user.getCustomer);
+app.get('/getcustomers', user.getCustomers);
 app.get('/getuser/:uid', user.getUser);
 app.get('/getusers', user.getUsers);
 app.post('/createuser', user.createUser);
