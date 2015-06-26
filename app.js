@@ -18,7 +18,8 @@ var express = require('express'),
   _ = require('underscore');
 
 var local = require('./config/local'),
-    api = require('./routes/api');
+    api = require('./routes/api'),
+    user = require('./routes/user');
 
 var app = module.exports = express();
 
@@ -45,18 +46,16 @@ passport.use(new DigestStrategy({ qop: 'auth' },
   }
 ));
 
-var RedisStore = require('connect-redis')(session),
-  sessionRedis = new RedisStore(local.session.redis);
-
 app.use(session({
-  store: sessionRedis,
-  secret: "hello",
+  secret: "idontknow",
   cookie: {
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
     maxAge: 30 * 24 * 60 * 60 * 1000
   },
-  resave: true,
-  saveUninitialized: true
+  resave: false,
+  saveUninitialized: false,
+  proxy: false,
+  cookie: { secure: true }
 }));
 
 /**
@@ -76,7 +75,7 @@ function allowCrossDomain(req, res, next) {
   } else {
     next();
   }
-}
+};
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -117,6 +116,13 @@ app.get('/api/name', api.name);
 app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
 
+// Product
+
+// User 
+app.post('/login', user.login);
+app.get('/getuser/:username', user.getUser);
+app.get('/getusers', user.getUsers);
+app.post('/createuser', user.createUser);
 app.get('/private', 
   passport.authenticate('digest', { session: false }),
   function(req, res) {

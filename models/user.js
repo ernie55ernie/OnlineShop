@@ -5,6 +5,6 @@ exports.User = function(Sequelize, sequelize){
     password: { type: Sequelize.STRING, len: [0, 50] },
     admin: Sequelize.INTEGER
   },{
-    tableName: 'user'
+    tableName: 'User'
   });
 }

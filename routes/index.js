@@ -5,7 +5,7 @@
 
 exports.index = function(req, res){
 	var config = {};
-    config.isLogin = false;//req.session.isLogin ? true : false;
+    config.isLogin = req.session.isLogin ? true : false;
     if(config.isLogin){
     	config.User = req.session.user;
         res.render('index', config);

@@ -45,8 +45,8 @@ module.exports = {
 
 	session: {
 		redis: {
-			host: 'pub-memcache-11842.us-east-1-1.2.ec2.garantiadata.com:11842',
-			port: 11080,
+			host: 'pub-memcache-11842.us-east-1-1.2.ec2.garantiadata.com',
+			port: 11842,
 			pass: "adminshopping"
 		}
     }
