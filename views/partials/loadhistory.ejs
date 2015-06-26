@@ -3,12 +3,8 @@
 		<h1>History  <small>sexy shopping list</small></h1>
 	</div>
 	<div >
-        <div class="input-group">
-            <input type="filepicker" style="width: 200px" class="form-control" placeholder="Choose csv file to read" data-fp-apikey="AfDUcO2yfT4yVBX9p2t4Xz" data-fp-mimetypes="text/comma-separated-values, text/csv, application/csv, application/excel, application/vnd.ms-excel, application/vnd.msexcel, text/anytext" data-fp-container="modal" onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();">
-            <span class="input-group-btn" style="float: left">
-                <button class="btn btn-default" type="button">Browse</button>
-                <button class="btn btn-default" type="button">Load</button>
-            </span>
+        <div>
+            <input type="filepicker" data-fp-apikey="AfDUcO2yfT4yVBX9p2t4Xz" data-fp-mimetypes="text/comma-separated-values, text/csv, application/csv, application/excel, application/vnd.ms-excel, application/vnd.msexcel, text/anytext" data-fp-container="modal" onchange="alert(event.fpfile.url)">
         </div>
     </div>
     <div class="page-header">

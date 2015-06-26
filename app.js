@@ -13,7 +13,7 @@ var express = require('express'),
   http = require('http'),
   path = require('path'),
   session = require('express-session'),
-  //passport = require('passport'),
+  passport = require('passport'),
   //DigestStrategy = require('passport-http').DigestStrategy,
   _ = require('underscore');
 
@@ -88,8 +88,8 @@ app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 var env = process.env.NODE_ENV || 'development';
 
@@ -131,6 +131,12 @@ app.get('/deletecategory/:caid', product.deleteCategory);
 
 // User or Customer
 app.post('/login', user.login);
+app.get('/logout', function(req, res){
+  req.logout();
+  req.session.destroy(function() {
+    res.redirect("/");
+  });
+});
 app.get('/getuser/:uid', user.getUser);
 app.get('/getusers', user.getUsers);
 app.post('/createuser', user.createUser);
