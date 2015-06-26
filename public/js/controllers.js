@@ -85,8 +85,25 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
       });
     };
   }).
-  controller('CreateHistoryCtrl', function ($scope) {
+  controller('CreateHistoryCtrl', function ($scope , $http) {
     // write Ctrl here
+    $http({method:"GET", url:"/getproducts"}).success(function(products){
+          $scope.products = products;
+          console.log(products);
+      });
+    $scope.$watch('kinds', function(){
+      var len = parseInt($scope.kinds);
+      var i=0;
+      $scope.product = new Array(len||0);
+      $scope.shoppinglist = _.range(len).map(function () {
+        return {'pid': ++i, 'prob': ''};
+      });
+    },true);
+
+    $scope.submit=function(){
+      console.log($scope.products);
+      console.log($scope.shoppinglist);
+    }
 
   }).
   controller('ProductCtrl', function ($scope) {
