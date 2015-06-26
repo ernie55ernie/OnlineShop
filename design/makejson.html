@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>How to create a JavaScript object array.</p>
+
+<p id="demo"></p>
+
+<script>
+var text =  '{ ' +
+                '"SID" : "1",'+/* Shopping List ID*/
+                '"CID" : "1",'+/* Customer ID*/
+                '"ShoppingList" : [{"PID":"1","Amount":"1"},{"PID":"2","Amount":"3"},'+
+                '{"PID":"3","Amount":"2"},{"PID":"4","Amount":"1"},{"PID":"5","Amount":"1"}],'+
+                '"Time" : "currentTime"'+
+            '}';
+var arr;
+try {
+    arr = JSON.parse(text);
+}
+catch(err) {
+    document.getElementById("demo").innerHTML = 
+    "<tr><td>" + err.message + "</td></tr>";
+}
+var out = "<table>";
+var i;
+//printarr(arr);
+var sid = arr.SID;
+var cid = arr.CID;
+var ShoppingList = arr.ShoppingList;
+var Time = arr.Time;
+// out += "<tr><td>" + "sid = "+ sid + " cid = " + cid +"</td></tr>" ;
+// for(i = 0;i<ShoppingList.length;i++){
+//     out += "<tr><td> PID = "+ShoppingList[i].PID;
+//     out += " Amount = " + ShoppingList[i].Amount+"</td></tr>";
+// }
+// out +=  "<tr><td> Time = " + Time + " "  + "</td></tr>";
+// out += "</table>";
+// document.getElementById("demo").innerHTML = out;
+var jsonarr = [];
+for(i = 0;i<ShoppingList.length;i++){
+	jsonarr.push(ShoppingList[i].PID);
+}
+// printjsonarr(jsonarr);
+var Previous = [];
+var seperate = [];
+var output = [];
+var j = 1;
+var seperate_count;
+for(i = 0;i<jsonarr.length;i++){
+	var jsontemp = jsonarr[i];
+	jsonarr[i] = -1;
+	seperate_count = 0;
+	j = recursive(jsonarr,j,i+1);
+	// output.push({  
+ //                    "RID":j,
+ //                    "Previous": Previous,
+ //                    "Recommand":jsonarr[i],
+ //                    "ID":cid,
+ //                    "Group":false
+ //                });
+	seperate.push(seperate_count);
+	jsonarr[i] = jsontemp;
+}
+function recursive(jarr,j1,Recom){
+	var i1 = 0;
+	for(i1 = 0;i1<jarr.length;i1++){
+		
+		if(jarr[i1]>=0){
+			seperate_count++;
+			var jarrtemp;
+			Previous.push(jarr[i1]);
+			var tempout = [];
+			for(var k = 0;k<Previous.length;k++){
+				tempout[k] = Previous[k];
+			}
+			output.push({ 
+	                    "RID":j1++,
+	                    "Previous": tempout,
+	                    "Recommand":Recom,
+	                    "ID":cid,
+	                    "Group":i1+1
+	                });
+			jarrtemp = jarr[i1];
+			jarr[i1] = -1;
+			j1 = recursive(jarr,j1,Recom);
+			Previous.pop();
+			jarr[i1] = jarrtemp;
+		}
+	}
+	return j1;
+}
+
+for(i = 0;i<output.length;i++){
+	out += "<tr><td> ********************************</td></tr>";
+	var j = 0;
+	var temp = output[i];
+	out += "<tr><td> RID = "+temp.RID+"</tr></td>";
+	for(j = 0;j<temp.Previous.length;j++){
+		out += "<tr><td> Previous["+j+"] = "+temp.Previous[j]+"</tr></td>";	
+	}
+	out += "<tr><td> Recommand = "+temp.Recommand+"</tr></td>";
+	out += "<tr><td> ID = "+temp.ID+"</tr></td>";
+	out += "<tr><td> Group = "+temp.Group+"</tr></td>";
+}
+	out += "<tr><td> ********************************</td></tr>";
+for(i = 0;i<seperate.length;i++){
+	out += "<tr><td> count["+i+"] = "+seperate[i];
+}
+	out += "</table>";
+	document.getElementById("demo").innerHTML = out;
+
+
+function  printjsonarr(jsonarr) {
+	// body...
+	for(i = 0;i<jsonarr.length;i++){
+	    out += "<tr><td> PID = "+jsonarr[i]+"</tr></td>";
+	}
+	// out += "</table>";
+	// document.getElementById("demo").innerHTML = out;
+}
+
+</script>
+
+</body>
+</html>

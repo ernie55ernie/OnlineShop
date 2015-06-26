@@ -49,6 +49,10 @@ module.exports = {
 			port: 11842,
 			pass: "adminshopping"
 		}
+    },
+
+    apikey: {
+    	filepicker: "AfDUcO2yfT4yVBX9p2t4Xz"
     }
 
 }
