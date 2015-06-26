@@ -2,7 +2,6 @@
  * Serve JSON to our AngularJS client
  */
 var CsvStore = require('../models').CsvStore;
-var User = require('../models').User;
 
 var local = require("../config/local");
 var Sequelize = require('sequelize');
@@ -21,33 +20,14 @@ exports.name = function (req, res) {
 
 exports.ruleGenerate = function(req, res){
 	var list = req.body.list;
-    
 	// create rule to database
 };
 
-exports.login = function(req, res){
-  var query = {
-    where:{
-      username: req.body.username,
-      password: req.body.password
-    }
-  }
-  User.sync().then(function() {
-    // here comes your find command.
-      User
-          .find(query).then(function(result){
-            if(result){
-              res.end("fail");
-              res.json({msg:"No user!"});
-            }
-            else{
-              var user = _.omit(result.dataValues, 'password', 'createdAt', 'updatedAt');
-              req.session.user = user;
-              req.session.isLogin = true;
-              res.json({msg:"success"});
-            }
-          })
-      })
+exports.csvNumver = function(req, res){
+  
+};
+
+exports.csvToJson = function(req, res){
 
 };
 

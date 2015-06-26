@@ -18,7 +18,9 @@ var express = require('express'),
   _ = require('underscore');
 
 var local = require('./config/local'),
-    api = require('./routes/api');
+    api = require('./routes/api'),
+    user = require('./routes/user'),
+    product = require('./routes/product');
 
 var app = module.exports = express();
 
@@ -45,18 +47,16 @@ passport.use(new DigestStrategy({ qop: 'auth' },
   }
 ));
 
-var RedisStore = require('connect-redis')(session),
-  sessionRedis = new RedisStore(local.session.redis);
-
 app.use(session({
-  store: sessionRedis,
-  secret: "hello",
+  secret: "idontknow",
   cookie: {
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
     maxAge: 30 * 24 * 60 * 60 * 1000
   },
-  resave: true,
-  saveUninitialized: true
+  resave: false,
+  saveUninitialized: false,
+  proxy: false,
+  cookie: { secure: true }
 }));
 
 /**
@@ -76,7 +76,7 @@ function allowCrossDomain(req, res, next) {
   } else {
     next();
   }
-}
+};
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -116,7 +116,25 @@ app.get('/partials/:name', routes.partials);
 app.get('/api/name', api.name);
 app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
+app.get('/api/csvNumber', api.csvNumber);
+app.get('/api/csvtojson', api.csvToJson);
 
+// Product
+app.get('/getproduct/:pid', product.getProduct);
+app.get('/getproducts', product.getProducts);
+app.post('/createproduct', product.createProduct);
+app.get('/deleteproduct/:pid', product.deleteProduct);
+app.get('/getcategory/:caid', product.getCategory);
+app.get('/getcategories', product.getCategories);
+app.post('/createcategory', product.createCategory);
+app.get('/deletecategory/:caid', product.deleteCategory);
+
+// User or Customer
+app.post('/login', user.login);
+app.get('/getuser/:uid', user.getUser);
+app.get('/getusers', user.getUsers);
+app.post('/createuser', user.createUser);
+app.get('/deleteuser/:uid', user.deleteUser);
 app.get('/private', 
   passport.authenticate('digest', { session: false }),
   function(req, res) {
