@@ -28,19 +28,20 @@ exports.ruleGenerate = function(req, res){
 exports.login = function(req, res){
   var query = {
     where:{
-      username: req.body.username
+      username: req.body.username,
+      password: req.body.password
     }
   }
   User.sync().then(function() {
     // here comes your find command.
       User
           .find(query).then(function(result){
-            if(member == null){
+            if(result){
               res.end("fail");
               res.json({msg:"No user!"});
             }
             else{
-              var user = _.omit(member.dataValues, 'password', 'createdAt', 'updatedAt');
+              var user = _.omit(result.dataValues, 'password', 'createdAt', 'updatedAt');
               req.session.user = user;
               req.session.isLogin = true;
               res.json({msg:"success"});

@@ -31,22 +31,17 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-passport.use(new DigestStrategy({
-  },
-  function(username, password, done) {
-    // asynchronous verification, for effect...
-    process.nextTick(function () {
-      
-      // Find the user by username.  If there is no user with the given
-      // username, or the password is not correct, set the user to `false` to
-      // indicate failure.  Otherwise, return the authenticated `user`.
-      findByUsername(username, function(err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        if (user.password != password) { return done(null, false); }
-        return done(null, user);
-      })
+passport.use(new DigestStrategy({ qop: 'auth' },
+  function(username, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      return done(null, user, user.password);
     });
+  },
+  function(params, done) {
+    // validate nonces as necessary
+    done(null, true)
   }
 ));
 
@@ -67,8 +62,21 @@ app.use(session({
 /**
  * Configuration
  */
-
 // all environments
+function allowCrossDomain(req, res, next) {
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+
+  var origin = req.headers.origin;
+  if (_.contains(app.get('allowed_origins'), origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+
+  if (req.method === 'OPTIONS') {
+    res.send(200);
+  } else {
+    next();
+  }
+}
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -76,6 +84,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -86,6 +95,7 @@ var env = process.env.NODE_ENV || 'development';
 
 // development only
 if (env === 'development') {
+  app.use(errorHandler());
 }
 
 // production only
@@ -107,7 +117,7 @@ app.get('/api/name', api.name);
 app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
 
-app.post('/login', 
+app.get('/private', 
   passport.authenticate('digest', { session: false }),
   function(req, res) {
     res.json(req.user);
