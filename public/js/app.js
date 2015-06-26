@@ -13,12 +13,12 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
   $stateProvider.
     state('/view1', {
       url:'/view1',
-      templateUrl: 'partials/partial1',
+      templateUrl: 'partials/product',
       controller: 'MyCtrl1'
     }).
     state('/view2', {
       url:'/view2',
-      templateUrl: 'partials/partial2',
+      templateUrl: 'partials/createhistory',
       controller: 'MyCtrl2'
     });
 
