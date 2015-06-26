@@ -23,7 +23,7 @@ exports.ruleGenerate = function(req, res){
 	// create rule to database
 };
 
-exports.csvNumver = function(req, res){
+exports.csvNumber = function(req, res){
   
 };
 
