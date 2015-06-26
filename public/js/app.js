@@ -20,6 +20,11 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
       url:'/view2',
       templateUrl: 'partials/createhistory',
       controller: 'MyCtrl2'
+    }).
+    state('/view3', {
+      url:'/view3',
+      templateUrl: 'partials/loadhistory',
+      controller: 'MyCtrl3'
     });
 
     $urlRouterProvider.otherwise('/view1');
