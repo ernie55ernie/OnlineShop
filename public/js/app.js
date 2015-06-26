@@ -25,6 +25,11 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
       url:'/view3',
       templateUrl: 'partials/loadhistory',
       controller: 'MyCtrl3'
+    }).
+    state('/view4', {
+      url:'/view4',
+      templateUrl: 'partials/signup',
+      controller: 'MyCtrl4'
     });
 
     $urlRouterProvider.otherwise('/view1');

@@ -1,0 +1,73 @@
+<div style="margin-left: 3%;margin-right: 3%">
+    <div class="page-header">
+        <h1>Sign Up <small>register your sexy address</small></h1>
+    </div>
+    <form data-toggle="validator" role="form">
+        <div class="form-group">
+            <label for="inputName" class="control-label">Name</label>
+            <input type="text" style="width: 200px;" class="form-control" id="inputName" placeholder="Sexy CH4" required>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail" class="control-label">Email</label>
+            <input type="email" style="width: 400px" class="form-control" id="inputEmail" placeholder="b02305010@ntu.edu.tw" data-error="Bruh, that email address is invalid" required>
+            <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="control-label">Password</label>
+            <div class="form-group">
+                <input type="password" style="width: 200px;" data-minlength="6" class="form-control" id="inputPassword" placeholder="ernie69ernie" required>
+                <span class="help-block">Minimum of 6 characters</span>
+            </div>
+            <div class="form-group">
+                <input type="password" style="width: 200px;" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div style="width: 200px; height:130px;">
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker10'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker10').datetimepicker({
+                    viewMode: 'years',
+                    format: 'MM/YYYY'
+                    });
+                });
+            </script>
+        </div>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" required>
+                    Male
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" required>
+                    Female
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="terms" data-error="Before you wreck yourself" required>
+                    Check yourself
+                </label>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
