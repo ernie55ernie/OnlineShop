@@ -62,8 +62,10 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
         password:$scope.password
       }
       $http({method:"POST", url:"/login", data:data}).success(function(post){
-          console.log(post);
+          // console.log(post);
           if(post.msg!="success"){ 
+            alert(post.msg);
+          }else{
             alert(post.msg);
           }
           // console.log("success");
