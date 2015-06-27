@@ -26,8 +26,11 @@ Date.prototype.toMysqlFormat = function() {
 
 exports.generateList = function(req, res){
     var products = req.body.products;   // products = {pid: 1, prob: 0.5}
-    var total = req.body.total || 100;
-    var CID = req.body.customer;
+    var total = req.body.total || 10;
+    var CID = req.body.customer || 1;
+    console.log(products);
+    console.log(total);
+    console.log(CID);
     // var products = [{pid: 1, prob: 0.2}, {pid: 2, prob: 0.3}, {pid: 3, prob: 0.4}];
     // var total = 10;
     // var CID = 1;
@@ -83,7 +86,7 @@ exports.generateList = function(req, res){
           })
         })
     }
-
+    // console.log(lists);
 
 
     res.json(lists);

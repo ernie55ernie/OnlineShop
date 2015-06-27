@@ -11,6 +11,7 @@ var express = require('express'),
   routes = require('./routes'),
   api = require('./routes/api'),
   generateList = require('./routes/generateList'),
+  history = require('./routes/history'),
   http = require('http'),
   path = require('path'),
   session = require('express-session'),
@@ -119,6 +120,9 @@ app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
 app.get('/api/csvNumber', api.csvNumber);
 app.post('/api/csvtojson', api.csvToJson);
+
+// History
+app.get('/gethistories', history.getHistories);
 
 // Product
 app.get('/getproduct/:pid', product.getProduct);

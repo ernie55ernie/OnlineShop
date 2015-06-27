@@ -9,7 +9,7 @@ angular.module('myApp.controllers', ['ngRoute']).
 
     if (typeof(Storage) != "undefined") {
       var lang = localStorage.getItem("lang");
-      console.log(lang);
+      // console.log(lang);
       if( lang!=null) $rootScope.lang = lang;
       else{
         $rootScope.lang = "zh-TW";
@@ -87,22 +87,41 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
   }).
   controller('CreateHistoryCtrl', function ($scope , $http) {
     // write Ctrl here
+    $scope.exceed=false;
+    $scope.products=[];
     $http({method:"GET", url:"/getproducts"}).success(function(products){
           $scope.products = products;
-          console.log(products);
+          // console.log(products);
       });
+
     $scope.$watch('kinds', function(){
-      var len = parseInt($scope.kinds);
-      var i=0;
+      $scope.exceed=false;
+      var len = parseInt($scope.kinds) || 0;
+      if($scope.products.length < len) {
+        len = $scope.products.length;
+        $scope.exceed=true;
+      }
+      var i = 0;
       $scope.product = new Array(len||0);
-      $scope.shoppinglist = _.range(len).map(function () {
-        return {'pid': ++i, 'prob': ''};
+      $scope.productprob = _.range(len).map(function () {
+        return {'pid': $scope.products[i++].pid, 'prob': ''};
       });
     },true);
 
     $scope.submit=function(){
-      console.log($scope.products);
-      console.log($scope.shoppinglist);
+      var jsonData=angular.toJson($scope.productprob);
+      var objectToSerialize={'object':jsonData};
+      $http({
+          url: '/generatelist',
+          method: "POST",
+          data: $.param(objectToSerialize),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          }
+      }).success(function(post){
+          console.log(post);
+      });
+      // console.log($scope.productprob);
     }
 
   }).
