@@ -14,52 +14,44 @@
         </div>
         <div class="form-group">
             <label for="inputPassword" class="control-label">Password</label>
-            <div class="form-group">
-                <input type="password" style="width: 200px;" data-minlength="6" class="form-control" id="inputPassword" ng-model="password" placeholder="ernie69ernie" required>
-                <span class="help-block">Minimum of 6 characters</span>
-            </div>
-            <div class="form-group">
+            <input type="password" style="width: 200px;" data-minlength="6" class="form-control" id="inputPassword" ng-model="password" placeholder="ernie69ernie" required>
+            <span class="help-block">Minimum of 6 characters</span>
+            <!--<div class="form-group">
                 <input type="password" style="width: 200px;" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
                 <div class="help-block with-errors"></div>
-            </div>
+            </div>-->
         </div>
         <div class="container">
             <div style="width: 200px; height:130px;">
                 <div class="form-group">
-                    <div class='input-group date' id='datetimepicker10'>
+                    <label for="inputBirthday" class="control-label">Birthday</label>
+                    <input type="text" style="width: 200px;" ng-model="birthday" class="form-control" id="inputBirthday" placeholder="2015-6-27" required>
+                    <!--<div class='input-group date' id='datetimepicker10'>
                         <input type='text' class="form-control" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
-                    </div>
+                    </div>-->
                 </div>
             </div>
-            <script type="text/javascript">
+            <!--<script type="text/javascript">
                 $(function () {
                     $('#datetimepicker10').datetimepicker({
                     viewMode: 'years',
                     format: 'MM/YYYY'
                     });
                 });
-            </script>
+            </script>-->
         </div>
         <div class="form-group">
             <div class="radio">
-                <label>
-                    <input type="radio" ng-model="gender" required>
-                    Male
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="gender"  required>
-                    Female
-                </label>
+                <label for="inputGender" class="control-label">Gender</label>
+                <input type="text" style="width: 200px;" ng-model="gender" class="form-control" id="inputGender" placeholder="1 for male" required>
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
-                <input type="filepicker" style="width: 200px" class="form-control" placeholder="Choose your photo" data-fp-apikey="AfDUcO2yfT4yVBX9p2t4Xz" data-fp-mimetypes="text/comma-separated-values, text/csv, application/csv, application/excel, application/vnd.ms-excel, application/vnd.msexcel, text/anytext" data-fp-container="modal" onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();">
+                <input type="text" style="width: 200px;" ng-model="photo" class="form-control" id="inputPhoto" placeholder="image url" required>
             </div>
         </div>
         <div class="form-group">

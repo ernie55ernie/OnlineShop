@@ -113,12 +113,14 @@ exports.createUser = function(req, res){
         //res.send("respond with a resource");
         //res.json(anotherTask);
 	    var customer = {
-			cusername: req.body.username,
-			cgender: req.body.gender,
-			cbirthday: req.body.birthday,
-			caccount: anotherTask.dataValues.uid,
-			cphoto: req.body.photo
-		}
+  			cusername: req.body.username,
+  			cgender: req.body.gender,
+  			cbirthday: req.body.birthday,
+  			uid: anotherTask.dataValues.uid,
+  			cphoto: req.body.photo,
+        cemail: req.body.email
+  		}
+        console.log(customer);
 		Customer.sync().then(function() {
 	    // here comes your find command.
 	      Customer

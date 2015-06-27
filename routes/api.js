@@ -2,6 +2,7 @@
  * Serve JSON to our AngularJS client
  */
 var CsvStore = require('../models').CsvStore;
+var JsonStore = require('../models').JsonStore;
 
 var local = require("../config/local");
 var Sequelize = require('sequelize');
@@ -36,15 +37,15 @@ exports.csvToJson = function(req, res){
       //var data = body;//.replace("/客/g", "").replace("/品/g", "");
       //console.log(JSON.stringify(body));
       var string = JSON.stringify(body).replace(/客/g, "").replace(/品/g, "").replace(/"/g, "");
-      console.log(string);
-      var split = string.split('\\n');
+      //console.log(string);
+      var split = string.split('\\r\\n');
       var i;
       var array = [];
       for(i = 0; i < split.length; i++){
-        var comma = split[i].split(',');
+        var comma = split[i].split(' ');
         var shoppingList = [];
         var j;
-        for(j = 1; j < comma.length; j++){
+        for(j = 0; j < comma.length; j++){
           var productJson = {};
           productJson = {
             "PID": comma[j],
@@ -54,7 +55,7 @@ exports.csvToJson = function(req, res){
         }
         var jsonObject = {
           SID: 0,
-          CID: comma[0],
+          CID: 9,
           ShoppingList: shoppingList,
           Time: "2015-06-26 00:00:00"
         };
@@ -105,6 +106,43 @@ exports.saveCsv = function(req, res){
       })
   })
 };
+
+
+exports.getJson = function(req, res){
+    JsonStore.sync().then(function() {
+    // here comes your find command.
+      JsonStore
+          .find({
+            where: {
+              jsonid: req.params.jsonid
+            }
+          }).then(function(result){
+            console.log('retrieve success');
+            res.json(result);
+          })
+      })
+};
+
+exports.saveJson = function(req, res){
+    JsonStore.sync().then(function() {
+    // here comes your find command.
+      JsonStore
+      .build(req.body)
+      .save()
+      .then(function(anotherTask) {
+        // you can now access the currently saved task with the variable anotherTask... nice!
+        console.log('Created an json file');
+        //res.send("respond with a resource");
+        res.json({
+          msg: "Success"
+        });
+      }).catch(function(error) {
+        // Ooops, do some error-handling
+        console.log(error);
+      })
+  })
+};
+
 
 exports.search = function(req, res){
   

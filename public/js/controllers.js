@@ -76,7 +76,10 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
         "csvurl": csvurl
       };
       $http({method:"POST", url:"/api/csvtojson", data:data}).success(function(result){
-          $scope.csvcontent = result;
+          $scope.csvcontent = result.slice(0, 5);
+          $http({method:"POST", url:"/api/savejson", data:{jsoncontent:result}}).success(function(post){
+              //console.log(post);
+          });
       });
       $http({method:"POST", url:"/api/savecsv", data:data}).success(function(post){
           console.log(post);
@@ -132,21 +135,25 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
           console.log(products);
       });
   }).
-  controller('SignupCtrl', function ($scope , $http) {
+  controller('SignupCtrl', function ($scope , $http, $location) {
     // write Ctrl here
     $scope.username = "";
-    $scope.email = "";
     $scope.password = "";
+    $scope.email = "";
     $scope.birthday = "";
     $scope.gender = "";
+    $scope.photo = "";
     $scope.Signup = function(){
+      console.log($scope.password);
       var data = {
         username:$scope.username,
         password:$scope.password,
         email:$scope.email,
         birthday:$scope.birthday,
-        gender:$scope.gender
+        gender:$scope.gender,
+        photo:$scope.photo
       }
+      console.log(data);
       $http({
         method:"POST", 
         url:"/createuser", 
@@ -154,13 +161,31 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
       })
       .success(function(post){
         console.log(post);
+        alert("Sign success ! Now you can login");
+        window.location.reload();
+        $location.path('/')
       });
     }
 
   }).
-  controller('ProfileMyCtrl', function ($scope) {
+  controller('ProfileMyCtrl', function ($rootScope, $scope, $http) {
     // write Ctrl here
-
+    $scope.name = "";
+    $scope.email = "";
+    $scope.birthday = "";
+    $scope.gender = "";
+    $scope.photo = "";
+    $scope.init = function(){
+      var uid = $rootScope.user.userId;
+      $http({method:"GET", url:"/getcustomer/" + uid}).success(function(customer){
+        console.log(customer);
+        $scope.name = customer.cusername;
+        $scope.email = customer.cemail;
+        $scope.birthday = customer.cbirthday;
+        $scope.gender = customer.cgender;
+        $scope.photo = customer.cphoto;
+      });
+    }
   }).
   controller('SearchMyCtrl', function ($scope) {
     // write Ctrl here

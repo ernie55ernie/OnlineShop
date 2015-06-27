@@ -11,13 +11,14 @@ var express = require('express'),
   routes = require('./routes'),
   api = require('./routes/api'),
   generateList = require('./routes/generateList'),
-  history = require('./routes/history'),
   http = require('http'),
   path = require('path'),
   session = require('express-session'),
   passport = require('passport'),
   //DigestStrategy = require('passport-http').DigestStrategy,
-  _ = require('underscore');
+  _ = require('underscore'),
+  MongoClient = require('mongodb').MongoClient, 
+  assert = require('assert');
 
 var local = require('./config/local'),
     api = require('./routes/api'),
@@ -50,6 +51,12 @@ passport.use(new DigestStrategy({ qop: 'auth' },
     done(null, true)
   }
 ));*/
+/*MongoClient.connect(local.model.mongo.url, function(err, db) {
+  //assert.equal(null, err);
+  console.log("Connected correctly to server");
+  console.log(err);
+  db.close();
+});*/
 
 app.use(session({
   // store: sessionRedis,
@@ -121,11 +128,10 @@ app.get('/partials/:name', routes.partials);
 app.get('/api/name', api.name);
 app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
-app.get('/api/csvNumber', api.csvNumber);
+app.get('/api/csvnumber', api.csvNumber);
 app.post('/api/csvtojson', api.csvToJson);
-
-// History
-app.get('/gethistories', history.getHistories);
+app.post('/api/savejson', api.saveJson);
+app.get('/api/getjson/:jsonid', api.getJson);
 
 // Product
 app.get('/getproduct/:pid', product.getProduct);

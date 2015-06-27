@@ -1,26 +1,26 @@
-<div style="margin-left: 3%;margin-right: 3%">
+<div style="margin-left: 3%;margin-right: 3%" ng-init="init()">
     <div class="page-header">
         <h1>Profile <small>show your sexy datas</small></h1>
     </div>
-    <img class="col-lg-4" ng-src="$root.user.userPhoto || '訪客'">
+    <img class="col-lg-4" src="{{$root.user.userPhoto}}">
     <div class=" col-lg-8">
         <table class="table">
             <tbody>
                 <tr>
                     <th>Name</th>
-                    <th ng-bind="$root.user.userName || 'ernie'"></th>
+                    <th ng-bind="name || 'ernie'"></th>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <th ng-bind="$root.user.userEmail || 'b01505023@ntu.edu.tw'"></th>
+                    <th ng-bind="email || 'b01505023@ntu.edu.tw'"></th>
                 </tr>
                 <tr>
                     <th>Gender</th>
-                    <th ng-bind="$root.user.userGender || 'Male'"></th>
+                    <th ng-bind="gender === 1 ? 'Male': 'Female' || 'Male'"></th>
                 </tr>
                 <tr>
                     <th>Birthday</th>
-                    <th ng-bind="$root.user.userBirthday || '52/17/69'"></th>
+                    <th ng-bind="birthday || '52/17/69'"></th>
                 </tr>
             </tbody>
         </table>
