@@ -2,9 +2,31 @@
     <div class="page-header">
     	<h1>Create History</h1>
     </div>
+
+    <h2 ng-show="showResult">Results:</h2>
+    <table class="table table-striped" ng-show="showResult">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>CID</th>
+                <th>List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="result in results track by $index">
+                <th>{{$index+1}}</th>
+                <th>{{result.CID}}</th>
+                <th>{{result.ShoppingList}}</th>
+            </tr>
+        </tbody>
+    </table>
+    
+
     <div class="form-group">
       <label for="usr">Kinds of Products:</label>
       <input type="text" class="form-control" id="usr" ng-model="kinds">
+      <label for="usr">Amount of Generated List:</label>
+      <input type="text" class="form-control" id="usr" ng-model="total">
     </div>
     <table class="table table-striped">
         <thead>
