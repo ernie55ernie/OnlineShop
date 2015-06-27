@@ -2,6 +2,7 @@ var _ = require('underscore');
 var CartItem = require('../models').CartItem;
 var History = require('../models').History;
 var local = require("../config/local");
+var mapjs = require('./map.js');
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(
         local.model.mysql.database,
@@ -47,52 +48,43 @@ exports.generateList = function(req, res){
       }
     }
 
-    for(var i in lists){
-        var history = {'htime': lists[i].Time, 'cid': lists[i].CID};
-        // console.log(history);
-        var list = lists[i].ShoppingList;
-        // console.log(list);
-        // History.sync().then(function() {
-            // console.log(history);
-            History
-             .build(history)
-             .save()
-             .then(function(resHistory) {
-                // console.log('here');
-                // console.log(resHistory.dataValues);
-                var hid = resHistory.dataValues.hid
-                for(var j in list){
-                    var cartitem = {
-                        'hid': hid,
-                        'pid': list[j].PID,
-                        'cinumber': 1
-                    };
-                    // console.log(cartitem);
-                    // CartItem.sync().then(function() {
-                    // here comes your find command.
-                    // console.log(cartitem);
-                      CartItem
-                      .build(cartitem)
-                      .save()
-                      .then(function(resCartItem) {
-                        // you can now access the currently saved task with the variable anotherTask... nice!
-                        //res.send("respond with a resource");
-                        // res.json(resHistory);
-                      }).catch(function(error) {
-                        // Ooops, do some error-handling
-                        console.log(error);
-                      })
-                    // })
-                }
-          }).catch(function(error) {
-            // Ooops, do some error-handling
-            console.log(error);
-          })
-        // })
-    }
+    // for(var i in lists){
+    //     var history = {'htime': lists[i].Time, 'cid': lists[i].CID};
+    //     var list = lists[i].ShoppingList;
+    //         History
+    //          .build(history)
+    //          .save()
+    //          .then(function(resHistory) {
+    //             var hid = resHistory.dataValues.hid
+    //             for(var j in list){
+    //                 var cartitem = {
+    //                     'hid': hid,
+    //                     'pid': list[j].PID,
+    //                     'cinumber': 1
+    //                 };
+    //                 // here comes your find command.
+    //                   CartItem
+    //                   .build(cartitem)
+    //                   .save()
+    //                   .then(function(resCartItem) {
+    //                     // you can now access the currently saved task with the variable anotherTask... nice!
+    //                   }).catch(function(error) {
+    //                     // Ooops, do some error-handling
+    //                     console.log(error);
+    //                   })
+    //             }
+    //       }).catch(function(error) {
+    //         // Ooops, do some error-handling
+    //         console.log(error);
+    //       })
+    // }
 
-    // console.log(lists);
+    console.log(lists);
 
 
     res.json(lists);
+
+    var rules = mapjs.createRules(lists);
+    console.log(JSON.stringify(rules));
+
 }
