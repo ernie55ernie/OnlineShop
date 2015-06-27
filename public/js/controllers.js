@@ -133,8 +133,30 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
           console.log(products);
       });
   }).
-  controller('SignupCtrl', function ($scope) {
+  controller('SignupCtrl', function ($scope , $http) {
     // write Ctrl here
+    $scope.username = "";
+    $scope.email = "";
+    $scope.password = "";
+    $scope.birthday = "";
+    $scope.gender = "";
+    $scope.Signup = function(){
+      var data = {
+        username:$scope.username,
+        password:$scope.password,
+        email:$scope.email;
+        birthday:$scope.birthday;
+        gender:$scope.gender;
+      }
+      $http({
+        method:"POST", 
+        url:"/createuser", 
+        data:data
+      })
+      .success(function(post){
+        console.log(post);
+      });
+    }
 
   }).
   controller('ProfileMyCtrl', function ($scope) {
