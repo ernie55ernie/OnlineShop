@@ -16,7 +16,9 @@ var express = require('express'),
   session = require('express-session'),
   passport = require('passport'),
   //DigestStrategy = require('passport-http').DigestStrategy,
-  _ = require('underscore');
+  _ = require('underscore'),
+  MongoClient = require('mongodb').MongoClient, 
+  assert = require('assert');
 
 var local = require('./config/local'),
     api = require('./routes/api'),
@@ -117,7 +119,7 @@ app.get('/partials/:name', routes.partials);
 app.get('/api/name', api.name);
 app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
-app.get('/api/csvNumber', api.csvNumber);
+app.get('/api/csvnumber', api.csvNumber);
 app.post('/api/csvtojson', api.csvToJson);
 
 // Product

@@ -41,7 +41,7 @@ exports.csvToJson = function(req, res){
       var i;
       var array = [];
       for(i = 0; i < split.length; i++){
-        var comma = split[i].split(',');
+        var comma = split[i].split(', ');
         var shoppingList = [];
         var j;
         for(j = 1; j < comma.length; j++){
