@@ -2,6 +2,7 @@ var _ = require('underscore');
 var CartItem = require('../models').CartItem;
 var History = require('../models').History;
 var local = require("../config/local");
+var mapjs = require('./map.js');
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(
         local.model.mysql.database,
@@ -26,15 +27,12 @@ Date.prototype.toMysqlFormat = function() {
 
 exports.generateList = function(req, res){
     var products = req.body.products;   // products = {pid: 1, prob: 0.5}
-    var total = req.body.total || 10;
+    var total = req.body.total || 100;
     var CID = req.body.customer || 1;
-    console.log(products);
-    console.log(total);
-    console.log(CID);
     // var products = [{pid: 1, prob: 0.2}, {pid: 2, prob: 0.3}, {pid: 3, prob: 0.4}];
     // var total = 10;
     // var CID = 1;
-    var lists = _.range(total+1).map(function () {
+    var lists = _.range(total).map(function () {
         var randomDateTime = randomDate(new Date(2014, 1, 1), new Date()).toMysqlFormat();
         return {'CID': CID, 'ShoppingList': new Array(), 'Time': randomDateTime};
     })
@@ -50,44 +48,43 @@ exports.generateList = function(req, res){
       }
     }
 
-    for(var i in lists){
-        var history = {'htime': lists[i].Time, 'cid': lists[i].CID};
-        var list = lists[i].ShoppingList;
-        History.sync().then(function() {
-            History
-             .build(history)
-             .save()
-             .then(function(resHistory) {
-                var hid = resHistory.hid
-                for(var j in list){
-                    var cartitem = {
-                        'hid': hid,
-                        'pid': list[j].PID,
-                        'cinumber': 1
-                    }
-                    CartItem.sync().then(function() {
-                    // here comes your find command.
-                      CartItem
-                      .build(cartitem)
-                      .save()
-                      .then(function(resCartItem) {
-                        // you can now access the currently saved task with the variable anotherTask... nice!
-                        //res.send("respond with a resource");
-                        // res.json(resHistory);
-                      }).catch(function(error) {
-                        // Ooops, do some error-handling
-                        console.log(error);
-                      })
-                    })
-                }
-          }).catch(function(error) {
-            // Ooops, do some error-handling
-            console.log(error);
-          })
-        })
-    }
-    // console.log(lists);
+    // for(var i in lists){
+    //     var history = {'htime': lists[i].Time, 'cid': lists[i].CID};
+    //     var list = lists[i].ShoppingList;
+    //         History
+    //          .build(history)
+    //          .save()
+    //          .then(function(resHistory) {
+    //             var hid = resHistory.dataValues.hid
+    //             for(var j in list){
+    //                 var cartitem = {
+    //                     'hid': hid,
+    //                     'pid': list[j].PID,
+    //                     'cinumber': 1
+    //                 };
+    //                 // here comes your find command.
+    //                   CartItem
+    //                   .build(cartitem)
+    //                   .save()
+    //                   .then(function(resCartItem) {
+    //                     // you can now access the currently saved task with the variable anotherTask... nice!
+    //                   }).catch(function(error) {
+    //                     // Ooops, do some error-handling
+    //                     console.log(error);
+    //                   })
+    //             }
+    //       }).catch(function(error) {
+    //         // Ooops, do some error-handling
+    //         console.log(error);
+    //       })
+    // }
+
+    console.log(lists);
 
 
     res.json(lists);
+
+    var rules = mapjs.createRules(lists);
+    console.log(JSON.stringify(rules));
+
 }

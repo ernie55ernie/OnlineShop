@@ -97,6 +97,8 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
 
     $scope.$watch('kinds', function(){
       $scope.exceed=false;
+      $scope.showResult = false;
+      $scope.results=[];
       var len = parseInt($scope.kinds) || 0;
       if($scope.products.length < len) {
         len = $scope.products.length;
@@ -110,17 +112,15 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
     },true);
 
     $scope.submit=function(){
-      var jsonData=angular.toJson($scope.productprob);
-      var objectToSerialize={'object':jsonData};
       $http({
           url: '/generatelist',
           method: "POST",
-          data: $.param(objectToSerialize),
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-          }
+          data: {'products': $scope.productprob, 'total': $scope.total, 'CID': 1},
       }).success(function(post){
+        alert('success');
           console.log(post);
+        $scope.results = post;
+        $scope.showResult = true;
       });
       // console.log($scope.productprob);
     }
