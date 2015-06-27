@@ -1,0 +1,17 @@
+<div style="margin-left: 3%; margin-right: 3%;">
+	<div class="page-header">
+		<h1>History  <small>sexy shopping list</small></h1>
+	</div>
+        <script "text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+        <div>
+            <input type="filepicker" data-fp-apikey="AfDUcO2yfT4yVBX9p2t4Xz" data-fp-mimetypes="text/comma-separated-values, text/csv, application/csv, application/excel, application/vnd.ms-excel, application/vnd.msexcel, text/anytext" data-fp-container="modal" onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv(event.fpfile.url);">
+        </div>
+    <div class="page-header">
+		<h3>Result</h3>
+	</div>
+    <ul class="list-group">
+        <span ng-repeat="list in csvcontent">
+        <li class="list-group-item">Customer ID <span ng-bind="list.CID"/> <span ng-repeat="single in list.ShoppingList">Product ID <span ng-bind="single.PID"/>: Amount <span ng-bind="single.Amount"/>, </span></li>
+        </span>
+    </ul>
+</div>
