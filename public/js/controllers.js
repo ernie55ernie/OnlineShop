@@ -86,7 +86,7 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
       });
     };
   }).
-  controller('CreateHistoryCtrl', function ($scope , $http) {
+  controller('CreateHistoryCtrl', function ($scope , $http, $rootScope) {
     // write Ctrl here
     $scope.exceed=false;
     $scope.products=[];
@@ -115,7 +115,7 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
       $http({
           url: '/generatelist',
           method: "POST",
-          data: {'products': $scope.productprob, 'total': $scope.total, 'CID': 1},
+          data: {'products': $scope.productprob, 'total': $scope.total, 'CID': $rootScope.user.userId},
       }).success(function(post){
         alert('success');
           console.log(post);
