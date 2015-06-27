@@ -118,7 +118,7 @@ exports.createRules = function(text){
     	                Rule: rule,
     	                Count: 1
     	            };
-    				output[j1]=jsonObject;
+    				// output[j1]=jsonObject;
     	            output[rule]=jsonObject;
     	            j1++;
     			}
@@ -149,7 +149,7 @@ exports.createRules = function(text){
     	                Rule: rule,
     	                Count: 1
     	            };
-    				output[j1]=jsonObject;
+    				// output[j1]=jsonObject;
     	            output[rule]=jsonObject;
                 j1++;
     			jarrtemp = jarr[i1];

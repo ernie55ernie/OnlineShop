@@ -23,8 +23,10 @@ var local = require('./config/local'),
     api = require('./routes/api'),
     user = require('./routes/user'),
     product = require('./routes/product');
-
+var RedisStore = require('connect-redis')(session);
+var sessionRedis = new RedisStore(local.session.redis);
 var app = module.exports = express();
+
 
 /*passport.serializeUser(function(user, done) {
   // console.log(user);
@@ -50,6 +52,7 @@ passport.use(new DigestStrategy({ qop: 'auth' },
 ));*/
 
 app.use(session({
+  // store: sessionRedis,
   secret: "idontknow",
   cookie: {
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),

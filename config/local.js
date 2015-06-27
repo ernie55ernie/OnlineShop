@@ -48,6 +48,8 @@ module.exports = {
 			host: 'pub-memcache-11842.us-east-1-1.2.ec2.garantiadata.com',
 			port: 11842,
 			pass: "adminshopping"
+			// host: 'localhost',
+			// port: 6379
 		}
     },
 
