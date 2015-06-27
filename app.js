@@ -11,7 +11,6 @@ var express = require('express'),
   routes = require('./routes'),
   api = require('./routes/api'),
   generateList = require('./routes/generateList'),
-  history = require('./routes/history'),
   http = require('http'),
   path = require('path'),
   session = require('express-session'),
@@ -50,6 +49,12 @@ passport.use(new DigestStrategy({ qop: 'auth' },
     done(null, true)
   }
 ));*/
+/*MongoClient.connect(local.model.mongo.url, function(err, db) {
+  //assert.equal(null, err);
+  //console.log("Connected correctly to server");
+  console.log(err);
+  db.close();
+});*/
 
 app.use(session({
   secret: "idontknow",
@@ -122,9 +127,6 @@ app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
 app.get('/api/csvnumber', api.csvNumber);
 app.post('/api/csvtojson', api.csvToJson);
-
-// History
-app.get('/gethistories', history.getHistories);
 
 // Product
 app.get('/getproduct/:pid', product.getProduct);

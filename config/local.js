@@ -34,12 +34,14 @@ module.exports = {
 			}
 		},
 		mongo : {
-			database: "shoppingprobability",
-			options : {
+			url: "mongodb://adminshopping:shoppingadmin@ds045882.mongolab.com:45882/shoppingprobability"
+			//pass: "shoppingadmin",
+			//database: "shoppingprobability",
+			/*options : {
 				host: "ds045882.mongolab.com:45882",
 				username: "adminshopping",
 				password: "shoppingadmin"
-			}
+			}*/
 		}
 	},
 

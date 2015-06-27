@@ -77,6 +77,7 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
       };
       $http({method:"POST", url:"/api/csvtojson", data:data}).success(function(result){
           $scope.csvcontent = result;
+          console.log(JSON.stringify(result));
       });
       $http({method:"POST", url:"/api/savecsv", data:data}).success(function(post){
           console.log(post);

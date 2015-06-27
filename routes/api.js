@@ -36,15 +36,15 @@ exports.csvToJson = function(req, res){
       //var data = body;//.replace("/客/g", "").replace("/品/g", "");
       //console.log(JSON.stringify(body));
       var string = JSON.stringify(body).replace(/客/g, "").replace(/品/g, "").replace(/"/g, "");
-      console.log(string);
-      var split = string.split('\\n');
+      //console.log(string);
+      var split = string.split('\\r\\n');
       var i;
       var array = [];
       for(i = 0; i < split.length; i++){
-        var comma = split[i].split(', ');
+        var comma = split[i].split(' ');
         var shoppingList = [];
         var j;
-        for(j = 1; j < comma.length; j++){
+        for(j = 0; j < comma.length; j++){
           var productJson = {};
           productJson = {
             "PID": comma[j],
@@ -54,7 +54,7 @@ exports.csvToJson = function(req, res){
         }
         var jsonObject = {
           SID: 0,
-          CID: comma[0],
+          CID: 9,
           ShoppingList: shoppingList,
           Time: "2015-06-26 00:00:00"
         };
