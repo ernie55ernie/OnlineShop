@@ -22,15 +22,13 @@ exports.getProducts = function(req, res){
 }
 
 exports.getProduct = function(req, res){
-	Product.sync().then(function(){
-		Product.find({
+	Product.find({
 			where: {
-				pid: req.pid
+				pid: req.params.pid
 			}
 		}).then(function(result){
 			res.json(result);
 		})
-	})
 }
 
 exports.getProductRecommand = function(req, res){

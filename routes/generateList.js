@@ -105,6 +105,8 @@ exports.generateList = function(req, res){
 }
 
 exports.recommend = function(req,res){
+
+  console.log(req.params);
   var uid = req.params.uid;
   var filepath = './' + uid;
   var result;
@@ -117,9 +119,9 @@ exports.recommend = function(req,res){
       console.log(result);
       for(var i in result){
         var j = result[i].indexOf('-');
-        result[i] = result[i].substring(j);
+        result[i] = parseInt(result[i].substring(j + 1)) + Math.floor(Math.random() * 10)+ Math.floor(Math.random() * 20);
       }
+      console.log(result);
+      res.send(result);
   });
-  console.log(result);
-  res.json(result);
 }
