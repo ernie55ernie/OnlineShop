@@ -10,6 +10,7 @@ var sequelize = new Sequelize(
         local.model.mysql.password,
         local.model.mysql.options
 );
+var fs = require('fs');
 
 function randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
@@ -79,12 +80,28 @@ exports.generateList = function(req, res){
     //       })
     // }
 
-    console.log(lists);
+    // console.log(lists);
 
 
     res.json(lists);
-
+    var filepath = "./"+CID;
     var rules = mapjs.createRules(lists);
-    console.log(JSON.stringify(rules));
+    console.log(rules);
+    fs.open(filepath, 'a', function(err, fd) {
+      console.log('open')
+      fs.close(fd, function(){});
+    });
+    fs.readFile(filepath, function (err, data) {
+      if (err) throw err;
+      console.log(data.length);
+      var oldcontent=[];
+      if(data.length != 0 ) oldcontent = JSON.parse(data.toString());
+      var newcontent = JSON.stringify(oldcontent.concat(rules));
+      fs.writeFile(filepath, newcontent, function (err) {
+        if (err) throw err;
+        console.log("It\'s saved!");
+      });
+    });
+
 
 }
