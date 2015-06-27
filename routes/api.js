@@ -3,8 +3,11 @@
  */
 var CsvStore = require('../models').CsvStore;
 var JsonStore = require('../models').JsonStore;
-
+var Product = require('../models').Product;
+var mapjs = require('./map.js');
+var map2js = require('./map2.js');
 var local = require("../config/local");
+var fs = require('fs');
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(
 		local.model.mysql.database,
@@ -62,6 +65,24 @@ exports.csvToJson = function(req, res){
         array.push(jsonObject);
       }
       res.json(array);
+      var filepath = "./9";
+      var rules = mapjs.createRules(array);
+      console.log(rules);
+      fs.open(filepath, 'a', function(err, fd) {
+        console.log('open')
+        fs.close(fd, function(){});
+      });
+      fs.readFile(filepath, function (err, data) {
+        if (err) throw err;
+        console.log(data.length);
+        var oldcontent=[];
+        if(data.length != 0 ) oldcontent = JSON.parse(data.toString());
+        var newcontent = JSON.stringify(oldcontent.concat(rules));
+        fs.writeFile(filepath, newcontent, function (err) {
+          if (err) throw err;
+          console.log("It\'s saved!");
+        });
+      });
     }
   })
 };
@@ -145,5 +166,11 @@ exports.saveJson = function(req, res){
 
 
 exports.search = function(req, res){
-  
+  var searchtext = "%"+req.params.searchtext+"%";
+  var query = {
+    pname: searchtext
+  };
+  Product.findAll(query).then(function(results){
+    res.json(results);
+  });
 }
