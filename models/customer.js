@@ -6,7 +6,7 @@ exports.Customer = function(Sequelize, sequelize){
     cgender: Sequelize.INTEGER,
     cbirthday: Sequelize.DATE,
     uid: Sequelize.INTEGER,
-    cphoto: { type: Sequelize.STRING, len: [0, 100] },
+    cphoto: { type: Sequelize.STRING, len: [0, 200] },
     cemail: { type: Sequelize.STRING, len: [0, 100]}
 
   },{

@@ -51,7 +51,7 @@ passport.use(new DigestStrategy({ qop: 'auth' },
 ));*/
 /*MongoClient.connect(local.model.mongo.url, function(err, db) {
   //assert.equal(null, err);
-  //console.log("Connected correctly to server");
+  console.log("Connected correctly to server");
   console.log(err);
   db.close();
 });*/
@@ -127,6 +127,8 @@ app.get('/api/csv', api.getAllCsv);
 app.post('/api/savecsv', api.saveCsv);
 app.get('/api/csvnumber', api.csvNumber);
 app.post('/api/csvtojson', api.csvToJson);
+app.post('/api/savejson', api.saveJson);
+app.get('/api/getjson/:jsonid', api.getJson);
 
 // Product
 app.get('/getproduct/:pid', product.getProduct);

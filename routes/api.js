@@ -2,6 +2,7 @@
  * Serve JSON to our AngularJS client
  */
 var CsvStore = require('../models').CsvStore;
+var JsonStore = require('../models').JsonStore;
 
 var local = require("../config/local");
 var Sequelize = require('sequelize');
@@ -105,6 +106,43 @@ exports.saveCsv = function(req, res){
       })
   })
 };
+
+
+exports.getJson = function(req, res){
+    JsonStore.sync().then(function() {
+    // here comes your find command.
+      JsonStore
+          .find({
+            where: {
+              jsonid: req.params.jsonid
+            }
+          }).then(function(result){
+            console.log('retrieve success');
+            res.json(result);
+          })
+      })
+};
+
+exports.saveJson = function(req, res){
+    JsonStore.sync().then(function() {
+    // here comes your find command.
+      JsonStore
+      .build(req.body)
+      .save()
+      .then(function(anotherTask) {
+        // you can now access the currently saved task with the variable anotherTask... nice!
+        console.log('Created an json file');
+        //res.send("respond with a resource");
+        res.json({
+          msg: "Success"
+        });
+      }).catch(function(error) {
+        // Ooops, do some error-handling
+        console.log(error);
+      })
+  })
+};
+
 
 exports.search = function(req, res){
   
