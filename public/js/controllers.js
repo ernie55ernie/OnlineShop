@@ -39,14 +39,7 @@ angular.module('myApp.controllers', ['ngRoute']).
       }
     });
 */
-    $scope.saveCsv = function(csvurl){
-      var data = {
-        "csvurl": csvurl
-      };
-      $http({method:"POST", url:"/api/savecsv", data:data}).success(function(post){
-          console.log(post);
-      });
-    };
+    
     /*
 data-fp-apikey="AfDUcO2yfT4yVBX9p2t4Xz" 
 data-fp-mimetypes="text/comma-separated-values, text/csv, application/csv, application/excel, application/vnd.ms-excel, application/vnd.msexcel, text/anytext" 
@@ -75,11 +68,16 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
     }
 
   }).
-  controller('LoadHistoryCtrl', function ($scope) {
+  controller('LoadHistoryCtrl', function ($scope, $http) {
+    $scope.csvcontent = [];
+
     $scope.saveCsv = function(csvurl){
       var data = {
         "csvurl": csvurl
       };
+      $http({method:"POST", url:"/api/csvtojson", data:data}).success(function(result){
+          $scope.csvcontent = result;
+      });
       $http({method:"POST", url:"/api/savecsv", data:data}).success(function(post){
           console.log(post);
       });
@@ -125,9 +123,14 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
     }
 
   }).
-  controller('ProductCtrl', function ($scope) {
+  controller('ProductCtrl', function ($scope , $http) {
     // write Ctrl here
-
+    $scope.pagenum = 0;
+    $http({method:"GET", url:"/getproducts"}).success(function(products){
+          $scope.products = products;
+          $scope.pagenum = (products.length-4)/6;
+          console.log(products);
+      });
   }).
   controller('SignupCtrl', function ($scope) {
     // write Ctrl here

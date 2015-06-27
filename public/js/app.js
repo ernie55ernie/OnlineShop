@@ -34,7 +34,7 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
     state('/profile', {
       url:'/profile',
       templateUrl: 'partials/profile',
-      controller: 'MyCtrl5'
+      controller: 'ProfileMyCtrl'
     }).
     state('/history', {
       url:'/history',
