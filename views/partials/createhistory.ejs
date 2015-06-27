@@ -3,8 +3,8 @@
     	<h1>Create History</h1>
     </div>
     <div class="form-group">
-      <label for="usr">Kinds of Products:</label>
-      <input type="text" class="form-control" id="usr" ng-model="kinds">
+        <label for="usr">Kinds of Products:</label>
+        <input type="text" class="form-control" id="usr" ng-model="kinds">
     </div>
     <table class="table table-striped">
         <thead>
@@ -20,7 +20,7 @@
     		    <th><img style="width: 100px; height: 72px" ng-src="{{products[$index].pimage}}"></th>
     		    <th>{{products[$index].pname}}</th>
     		    <th>{{products[$index].pprice}}</th>
-    		    <th><input type="text" placeholder="Chance" ng-model="shoppinglist[$index].prob"></th>
+    		    <th><input type="text" placeholder="Chance" ng-model="productprob[$index].prob"></th>
     	    </tr>
 <!--     	    <tr>
     		    <th><img style="width: 100px; height: 72px" src="img/skin2.jpg"></th>
@@ -30,5 +30,6 @@
     	    </tr> -->
     	</tbody>
     </table>
+    <h1 ng-show="exceed">Exceed Kinds of Products that we Offer</h1>
     <button type="button" class="btn btn-primary btn-lg" ng-click="submit()">Submit</button>
 </div>

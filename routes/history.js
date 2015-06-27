@@ -4,7 +4,7 @@
 var CartItem = require('../models').CartItem;
 var History = require('../models').History;
 var Product = require('../models').Product;
-
+var local = require("../config/local");
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(
 	local.model.mysql.database,
@@ -13,7 +13,7 @@ var sequelize = new Sequelize(
 	local.model.mysql.options
 );
 
-exports.getHistory = function(req, res){
+exports.getHistories = function(req, res){
 	History.sync().then(function(){
 		History.findAll().then(function(result){
 			res.json(result);
