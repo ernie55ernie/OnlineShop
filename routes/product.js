@@ -33,6 +33,23 @@ exports.getProduct = function(req, res){
 	})
 }
 
+exports.getProductRecommand = function(req, res){
+	var array = [];
+	var i;
+	for(i = 0; i < req.body.recommend.length; i++){
+		Product.sync().then(function(){
+			Product.find({
+				where: {
+					pid: req.body.recommend[i]
+				}
+			}).then(function(result){
+				array.push(result);
+			})
+		})
+	}
+	res.json(array);
+}
+
 exports.createProduct = function(req, res){
 	var product = req.body;
 	Product.sync().then(function(){

@@ -3,6 +3,7 @@
  */
 var CsvStore = require('../models').CsvStore;
 var JsonStore = require('../models').JsonStore;
+var Product = require('../models').Product;
 
 var local = require("../config/local");
 var Sequelize = require('sequelize');
@@ -145,5 +146,11 @@ exports.saveJson = function(req, res){
 
 
 exports.search = function(req, res){
-  
+  var searchtext = "%"+req.params.searchtext+"%";
+  var query = {
+    pname: searchtext
+  };
+  Product.findAll(query).then(function(results){
+    res.json(results);
+  });
 }

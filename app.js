@@ -129,6 +129,7 @@ app.get('/api/csvnumber', api.csvNumber);
 app.post('/api/csvtojson', api.csvToJson);
 app.post('/api/savejson', api.saveJson);
 app.get('/api/getjson/:jsonid', api.getJson);
+app.get('/api/search/:searchtext', api.search);
 
 // Product
 app.get('/getproduct/:pid', product.getProduct);
