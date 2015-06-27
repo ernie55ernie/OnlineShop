@@ -126,7 +126,7 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
     }
 
   }).
-  controller('ProductCtrl', function ($scope , $http) {
+  controller('ProductCtrl', function ($rootScope, $scope , $http) {
     // write Ctrl here
     $scope.pagenum = 0;
     $http({method:"GET", url:"/getproducts"}).success(function(products){
@@ -134,6 +134,14 @@ onchange="alert(event.fpfile.url);angular.element(this).scope().saveCsv();angula
           $scope.pagenum = (products.length-4)/6;
           console.log(products);
       });
+
+    if($rootScope.user.userId){
+      $http({method:"POST", url:"/recommend", data:{
+        uid: $rootScope.user.userId
+      }}).success(function(products){
+          
+      });
+    }
   }).
   controller('SignupCtrl', function ($scope , $http, $location) {
     // write Ctrl here
